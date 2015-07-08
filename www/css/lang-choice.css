@@ -1,0 +1,205 @@
+@font-face {
+  font-family: 'NotoSansArmenian';
+  src: url("../assets/img/fonts/NotoSansArmenian.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'NotoSansKhmer';
+  src: url("../assets/img/fonts/NotoSansKhmer.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'NotoSansThai';
+  src: url("../assets/img/fonts/NotoSansThai.ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'HelamSlabldsLat-Light';
+  src: url("../assets/img/fonts/HelamSlabldsLat-Light.otf");
+  font-weight: normal;
+  font-style: normal; }
+
+pre {
+  width: 100%;
+  min-height: 3em;
+  overflow-x: scroll;
+  border: 1px solid pink; }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(129, 185, 75, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s opacity linear; }
+
+.backdrop.visible {
+  visibility: visible; }
+
+.backdrop.active {
+  opacity: 1; }
+
+#pdfImage, #wrapper {
+  width: 100%;
+  height: 100%; }
+
+.form_fields_container {
+  margin-bottom: .5em; }
+
+.pdf button {
+  margin-bottom: 1em; }
+
+body {
+  background: #81b94b;
+  background-size: cover;
+  color: #fff;
+  padding: 2em;
+  text-align: center; }
+
+.booklet {
+  background-color: #fff;
+  min-height: 100vh;
+  width: 100vw;
+  margin: -2em;
+  padding: 2em 1.25em;
+  color: #333;
+  text-align: left; }
+
+body, h3, .tagline, .language p {
+  margin: 0;
+  font-weight: normal; }
+
+.title {
+  font-family: 'MuseoSlabldsLat-700','HelamSlabldsLat-Light';
+  font-size: 4.5em;
+  margin: 2em 0 0 0;
+  line-height: 1; }
+  @media (min-width: 40em) {
+    .title {
+      font-size: 5em; } }
+
+.instructions h1 {
+  font-family: 'MuseoSlabldsLat-700','HelamSlabldsLat-Light';
+  font-size: 2.3em;
+  margin: 3.5em 0 0 0; }
+  @media (min-width: 40em) {
+    .instructions h1 {
+      font-size: 3em; } }
+
+.serif {
+  font-family: 'MuseoSlabldsLat-700','HelamSlabldsLat-Light'; }
+
+.tagline {
+  font-size: 1.75em;
+  line-height: 1.2; }
+
+.title ~ h2 {
+  font-family: 'MuseoSlabldsLat-700','HelamSlabldsLat-Light';
+  margin: 2em 0 .5em 0;
+  font-size: 2em; }
+
+.welcome ul, .instructions ol {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 70em; }
+
+.welcome ul {
+  list-style-type: none;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  @media (min-width: 40em) {
+    .welcome ul {
+      width: 90%;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row; } }
+
+.instructions ol {
+  font-size: 1.4em;
+  text-align: left;
+  padding-left: 1.5em; }
+  .instructions ol li {
+    line-height: 1.2;
+    margin-top: .5em; }
+  @media (min-width: 40em) {
+    .instructions ol {
+      font-size: 2em;
+      width: 70%; } }
+
+.language {
+  border: 1px solid #fff;
+  margin-bottom: .125em;
+  padding: 1em;
+  -webkit-flex-grow: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2; }
+  .language p {
+    line-height: 1.4; }
+  @media (min-width: 40em) {
+    .language {
+      -webkit-flex-basis: 33%;
+          -ms-flex-preferred-size: 33%;
+              flex-basis: 33%;
+      padding: 1em 0; } }
+
+h3 {
+  font-size: 1.5em; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+.welcome a {
+  display: block; }
+  .welcome a:hover, .welcome a:focus, .welcome a:active {
+    border: 1px solid #000;
+    margin: -1em;
+    padding: 1em; }
+    @media (min-width: 40em) {
+      .welcome a:hover, .welcome a:focus, .welcome a:active {
+        margin: -1em 0;
+        padding: 1em 0; } }
+
+* {
+  line-height: 1; }
+
+[lang='th'], [lang='th'] h1 {
+  font-family: 'NotoSansThai'; }
+
+.home-button, .continue-button {
+  display: block;
+  position: absolute;
+  left: 2em;
+  bottom: 4em;
+  background-image: url('../assets/img/icon/arrow_left_white_11x11.png');
+  background-size: contain;
+  height: 1em;
+  width: 1em; }
+
+.continue-button {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  left: auto;
+  right: 2em; }
+
+/* [lang="th"] ol {
+  list-style-type: thai; //guess not
+}*/

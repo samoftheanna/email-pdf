@@ -1,0 +1,11 @@
+{
+  "name": "my-booklet",
+  "app_id": "9b316d8a",
+  "gulpStartupTasks": [
+    "default"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

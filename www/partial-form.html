@@ -1,0 +1,24 @@
+<div class="booklet" ng-controller="BookletCtrl">
+  <div id="formHeader">
+    <div class="generation-banner generation-{{personData.generation}}">
+      <span class="nav-arrow navPrevious" data-ng-click="goTo(personData.previous)" data-ui-sref-opts="{reload: true}"></span>
+      <h1 class="serif" translate>{{personData.generationTitle}}</h1>
+      <h2 class="serif" translate translate-values="{'child': formData[personData.child].firstName + ' ' + formData[personData.child].lastName}" ng-show="personData.generation_subtitle">{{personData.generation_subtitle}}</h2>
+      <span class="nav-arrow navNext" data-ng-click="goTo(personData.next)" data-ui-sref-opts="{reload: true}"></span>
+    </div>
+  </div>
+  <div id="form-container" ui-view>
+  </div>
+  <button class="button secondary center-button" data-ng-click="goTo('^.pdf')" ng-hide="thisPage === 'booklet.pdf'">{{'SaveAndExit' | translate}}</button>
+<!--  <button class="button tertiary center-button" data-ng-click="goTo('^.pdf')" translate>{{'exit_prompt_all_done'}}</button> -->
+  <button class="button tertiary center-button" data-ng-click="goTo('home')" translate>{{'exitbooklet'}}</button>
+<!-- testing -->
+  <p>formData</p>
+  <pre>
+    {{ formData | json}}
+  </pre>
+  <p>personData</p>
+  <pre>
+    {{ personData }}
+  </pre>
+</div>

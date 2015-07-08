@@ -1,0 +1,106 @@
+<div id="{{generationTitle}}" ng-form="personForm" ng-submit="processForm()">
+  <div class="form_fields_container clearfix">
+    <div class="formDataContainer">
+      <div class="clearfix formData">
+        <div id="nameTemplates" class="formData_container" ng-controller="TransliterationCtrl">
+          <div class="formData_header clearfix">
+            <div class="nameTemplate_header_selector">
+              <label class="nameTemplate_header_selector_label">{{'template' | translate}}:</label>
+              <select data-ng-model="selectedTemplate" ng-options="template for template in templates" ng-selected="selectedTemplate" ng-change="change()">
+              </select>
+            </div>
+          </div>
+          <div class="formData_inner">
+            <div ng-if="!isGrid()">
+              <div booklet-names type="linear"></div>
+            </div>
+            <div ng-if="isGrid()">
+              <div booklet-names type="grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-container">
+        <add-photo></add-photo>
+      </div>
+      <div class="formData radio-container" data-ng-if="!personData.parent">
+        <div class="formData_container">
+          <div class="formData_header clearfix">
+            <label class="formData_header_text" translate>{{'gender'}}</label>
+          </div>
+          <div class="formData_inner">
+            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="{{'male' | translate}}" name="00F">
+            <label class="inline radioLabel">{{'male' | translate}}</label>
+            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="{{'female' | translate}}" name="00G">
+            <label class="inline radioLabel">{{'female' | translate}}</label>
+            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="{{'unknown' | translate}}" name="00H">
+            <label class="inline radioLabel">{{'unknown' | translate}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="formData" data-type="birth">
+        <div id="dateComponents-birth" class="formData_container">
+          <div class="formData_inner">
+            <ul class="formData_input_container">
+              <li>
+                <label translate>{{'date_of_birth'}}</label>
+              </li>
+              <li>
+                <input class="date" type="text" data-ng-model="formData[personData.generationTitle][personData.sibNumber].birth.date" placeholder="{{'date_format' | translate}}" id="birthDate">
+              </li>
+              <li>
+                <label translate>{{'birth_place'}}</label>
+              </li>
+              <li>
+                <input class="place" type="text" data-ng-model="formData[personData.generationTitle][personData.sibNumber].birth.place" placeholder="{{'birth_place_ex' | translate}}" id="birthPlace">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="formData radio-container" data-ng-show="personData.generation !== '1'">
+        <div class="formData_container">
+          <div class="formData_header clearfix">
+              <label class="formData_header_text" translate>{{'is_living'}}</label>
+          </div>
+          <div class="formData_inner">
+            
+              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="true" name="0Y8">
+            
+            <label class="inline radioLabel" translate>{{'yes'}}</label>
+            
+              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="false" name="0Y9">
+            
+            <label class="inline radioLabel" translate>{{'no'}}</label>
+            
+              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="unknown" name="0YA">
+            
+            <label class="inline radioLabel" translate>{{'unknown_living'}}</label>
+            
+          </div>
+        </div>
+      </div>
+      <div class="formData" data-type="death" data-ng-show="formData[personData.generationTitle][personData.sibNumber].living === 'false'">
+        <div id="dateComponents-death" class="formData_container">
+          <div class="formData_inner">
+            <ul class="formData_input_container">
+              <li>
+                <label translate>{{'death_date'}}</label>
+              </li>
+              <li>
+               <input data-test="death_date" class="date" type="text" data-ng-model="formData[personData.generationTitle][personData.sibNumber].death.date" placeholder="{{'date_format' | translate}}" id="deathDate">
+              </li>
+              <li>
+                <label translate>{{'death_place'}}</label>
+              </li>
+              <li>
+                <input class="place" type="text" data-ng-model="formData[personData.generationTitle][personData.sibNumber].death.place" placeholder="{{'death_place_ex' | translate}}" id="deathPlace">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="button primary" data-ng-click="goTo(returnTo)" data-ui-sref-opts="{reload: true, inherit: true}">{{'SaveAndContinue' | translate}}</button>
+    </div>
+  </div>
+</div>

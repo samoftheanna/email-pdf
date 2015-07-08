@@ -1,0 +1,14 @@
+<div class="pdf" ng-controller="PdfCtrl">
+  <!--iframe used for inline display when using chrome for browser based testing/debugging (not used in app)-->
+  <iframe id='pdfImage' src="empty.html"></iframe> 
+  <div ng-repeat="form in formData">
+    <p translate>{{form.firstName}}</p>
+  </div>
+  <div ng-controller="getData">
+    <div ng-repeat="names in data">
+          <span class="serif" translate>{{names}}</span>
+    </div>
+  </div>
+  <button class="button primary center-button" data-ng-click="runReport(formData)" translate>{{'exit_prompt_all_done'}}</button>
+  <button class="button secondary center-button" data-ng-click="clearReport()" translate>{{'cancel'}}</button>
+</div>

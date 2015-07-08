@@ -1,0 +1,11 @@
+<p>i'm a grid language! i need more work</p>
+<table class="nameTemplatesTable">
+  <tr>
+    <th></th>
+    <th data-ng-hide="removeTitle({{currentTemplate}})" translate>{{'title'}}</th>
+    <th data-ng-hide="shouldReverse({{currentTemplate}})" translate>{{'first_name'}}</th>
+    <th translate>{{'last_name'}}</th>
+    <th data-ng-show="shouldReverse(currentTemplate)" translate>{{'first_name'}}</th>
+    <th data-ng-hide="removeSuffix(currentTemplate)" translate>{{'suffix'}}</th>
+  </tr>
+</table>

@@ -1,0 +1,32 @@
+<div>
+  <div class="nameTemplate_inner">
+    <div data-ng-show="showSubLanguagePicker()">
+      <p>pick a sublanguage!</p>
+      <ul class="nameTemplate_data_types">
+        <li class="nameTemplate_data_type" ng-repeat="data_type in template.data_types">
+          <a href="" class="active" data-ng-click="setCurrentDataType(data_type)">{{data_type}}</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="formData_input_container clearfix" ng-if="!personData.sibling">
+      <li>
+        <label class="name-title" for="first names">{{'first_name' | translate}}</label>
+        <input type="text" class="form-control" name="first names" ng-model="formData[personData.generationTitle].firstName" placeholder="{{'first_name_placeholder' | translate}}">
+      </li>
+      <li>
+        <label class="name-title" for="last names">{{'last_name' | translate}}</label>
+        <input type="text" class="form-control" name="last names" ng-model="formData[personData.generationTitle].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+      </li>
+    </ul>
+    <ul class="formData_input_container clearfix" ng-if="personData.sibling">
+      <li>
+        <label class="name-title" for="first names">{{'first_name' | translate}}</label>
+        <input type="text" class="form-control" name="first names" ng-model="formData[personData.generationTitle][personData.sibNumber].firstName" placeholder="{{'first_name_placeholder' | translate}}">
+      </li>
+      <li>
+        <label class="name-title" for="last names">{{'last_name' | translate}}</label>
+        <input type="text" class="form-control" name="last names" ng-model="formData[personData.generationTitle][personData.sibNumber].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+      </li>
+    </ul>
+  </div>
+</div>
