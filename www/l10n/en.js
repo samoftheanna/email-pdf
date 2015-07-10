@@ -360,6 +360,8 @@ var translations_en = {
   "view_stories_count":"View Stories (%{count})",
   "write_your_own":"Write my own",
 
-  "page_title": "Initial Load"
+  "page_title": "Initial Load",
   
+  "cta_button_pedigree": "Download PDF",
+  "banner_header_finished": "Congratulations"
 };

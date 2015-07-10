@@ -45,7 +45,8 @@ pre {
     visibility: visible; }
   .backdrop.active {
     opacity: 1; }
-    
+
+
 #pdfImage,
 #wrapper {
   width: 100%;
@@ -54,6 +55,7 @@ pre {
 .form_fields_container {
   margin-bottom: .5em;
 }
+
 .pdf button {
   margin-bottom: 1em;
 }
@@ -66,6 +68,13 @@ body {
   text-align: center;
 }
 
+.new-photo {
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
 .booklet {
   background-color: #fff;
   min-height: 100vh;
@@ -74,6 +83,22 @@ body {
   padding: 2em 1.25em;
   color: #333;
   text-align: left;
+  overflow: hidden;
+  > .button-container {
+    width: 640px;
+    margin: 0 auto;
+    @media only screen and (max-width:650px){
+     width: 100%; 
+    }
+  }
+  .button-container > button {
+    width: 66%;
+    clear: right;
+    margin-bottom: 1em;
+    @media only screen and (max-width:650px){
+      width: 100%;
+    }
+  }
 }
 
 
@@ -202,9 +227,10 @@ a {
   left: 2em;
   bottom: 4em;
   background-image: url('../assets/img/icon/arrow_left_white_11x11.png');
+  background-repeat: no-repeat;
   background-size: contain;
-  height: 1em;
-  width: 1em;
+  height: 2em;
+  width: 2em;
 }
 
 .continue-button {

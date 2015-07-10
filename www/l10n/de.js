@@ -332,5 +332,8 @@ var translations_de = {
   "unknown_gender": "Unbekannt",
   "storiesFound_message_RFFM": "Wir haben %{count} Geschichten über Ihren Urgroßvater gefunden. Möchten Sie eine davon in Ihrem Heft verwenden ODER lieber eine eigene schreiben?",
   "storiesFound_message_RFMM": "Wir haben %{count} Geschichten über Ihren Urgroßvater gefunden. Möchten Sie eine davon in Ihrem Heft verwenden ODER lieber eine eigene schreiben?",
-  "checking_next_steps": "Überprüfung der nächsten Schritte …"
+  "checking_next_steps": "Überprüfung der nächsten Schritte …",
+  
+  "cta_button_pedigree": "PDF herunterladen",
+  "banner_header_finished": "Herzlichen Glückwunsch!"
 };

@@ -332,5 +332,8 @@ var translations_zh = {
   "unknown_gender": "不詳",
   "storiesFound_message_RFFM": "找到%{count}則關於你外曾外祖父的故事。 你想要在小冊子中使用其中一則故事或自己寫故事？",
   "storiesFound_message_RFMM": "找到%{count}則關於你外曾祖父的故事。 你想要在小冊子中使用其中一則故事或自己寫故事？",
-  "checking_next_steps": "查看「後續步驟」..."
+  "checking_next_steps": "查看「後續步驟」...",
+
+  "cta_button_pedigree": "下載PDF檔",
+  "banner_header_finished": "恭喜你"
 };

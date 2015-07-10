@@ -332,5 +332,8 @@ var translations_ko = {
   "unknown_gender": "미상",
   "storiesFound_message_RFFM": "귀하의 증조할아버지에 대한 이야기 %{count}개를 찾았습니다. 귀하의 책자에 이 이야기 중 하나를 사용하겠습니까? 아니면 귀하 자신의 이야기를 쓰겠습니까?",
   "storiesFound_message_RFMM": "귀하의 증조할아버지에 대한 이야기 %{count}개를 찾았습니다. 귀하의 책자에 이 이야기 중 하나를 사용하겠습니까? 아니면 귀하 자신의 이야기를 쓰겠습니까?",
-  "checking_next_steps": "다음 단계를 확인하는 중입니다..."
+  "checking_next_steps": "다음 단계를 확인하는 중입니다...",
+
+  "cta_button_pedigree": "PDF 다운로드",
+  "banner_header_finished": "축하합니다."
 };

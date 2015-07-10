@@ -9,9 +9,11 @@
   </div>
   <div id="form-container" ui-view>
   </div>
-  <button class="button secondary center-button" data-ng-click="goTo('^.pdf')" ng-hide="thisPage === 'booklet.pdf'">{{'SaveAndExit' | translate}}</button>
-<!--  <button class="button tertiary center-button" data-ng-click="goTo('^.pdf')" translate>{{'exit_prompt_all_done'}}</button> -->
-  <button class="button tertiary center-button" data-ng-click="goTo('home')" translate>{{'exitbooklet'}}</button>
+  <div class="button-container">
+    <button class="button secondary center-button" data-ng-click="goTo('^.pdf'); setReturn()" ng-hide="thisPage === 'booklet.pdf'">{{'SaveAndExit' | translate}}</button>
+  <!--  <button class="button tertiary center-button" data-ng-click="goTo('^.pdf')" translate>{{'exit_prompt_all_done'}}</button> -->
+    <button class="button tertiary center-button" data-ng-click="goTo('home')" translate>{{'exitbooklet'}}</button>
+  </div>
 <!-- testing -->
   <p>formData</p>
   <pre>
@@ -21,4 +23,5 @@
   <pre>
     {{ personData }}
   </pre>
+
 </div>

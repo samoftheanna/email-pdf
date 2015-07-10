@@ -332,5 +332,8 @@ var translations_es = {
   "unknown_gender": "Desconocido",
   "storiesFound_message_RFFM": "Encontramos %{count} historias sobre su bisabuelo. ¿Le gustaría usar una de estas historias en su cuadernillo O escribir su propia historia?",
   "storiesFound_message_RFMM": "Encontramos %{count} historias sobre su bisabuelo. ¿Le gustaría usar una de estas historias en su cuadernillo O escribir su propia historia?",
-  "checking_next_steps": "Verificando pasos siguientes…"
+  "checking_next_steps": "Verificando pasos siguientes…",
+
+  "cta_button_pedigree": "Descargar archivo PDF",
+  "banner_header_finished": "Felicitaciones"
 };

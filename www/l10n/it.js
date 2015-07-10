@@ -332,5 +332,8 @@ var translations_it = {
   "unknown_gender": "Sconosciuto",
   "storiesFound_message_RFFM": "Abbiamo trovato %{count} storie su tuo bisnonno. Desideri usare una di queste storie nel tuo libretto OPPURE scriverne una tu?",
   "storiesFound_message_RFMM": "Abbiamo trovato %{count} storie su tuo bisnonno. Desideri usare una di queste storie nel tuo libretto OPPURE scriverne una tu?",
-  "checking_next_steps": "Controllo dei passi successivi in corso"
+  "checking_next_steps": "Controllo dei passi successivi in corso",
+
+  "cta_button_pedigree": "Scarica PDF",
+  "banner_header_finished": "Congratulazioni!"
 };

@@ -185,8 +185,9 @@ angular.module('scouts')
       Camera.getPicture().then(function(imageURI) {
         console.log(imageURI);
         $scope.lastPhoto = imageURI;
+        $scope.formData[$state.current.params.generationTitle].image = $scope.lastPhoto;
       }, function(err) {
-        console.err(err);
+        console.log(err);
       });
     };
     
@@ -207,7 +208,6 @@ angular.module('scouts')
     switch ($stateParams.sibling) {
       case 'R_title':
       $scope.returnTo = '^.siblings';
-      console.log($state.current.params.sibNumber);
       break;
       case 'RM':
       $scope.returnTo = '^.psiblings';
@@ -229,8 +229,9 @@ angular.module('scouts')
       break;
     }      
 
-    var setReturn = function(){
+    $scope.setReturn = function(){
       $scope.returnTo = returnTo;
+      console.log('i set your return ' + $scope.returnTo + ' ' + returnTo);
     };
     
     $scope.setSibNumber = function(number){
@@ -239,75 +240,16 @@ angular.module('scouts')
 
     $scope.addSibling = function(){
       if($state.current.params.sibNumber){
-        $state.current.params.sibNumber = ++$state.current.params.sibNumber;
+        var gen = $state.current.params.generationTitle;
+        var info = $scope.formData;
+        var number = Object.keys(info[gen]).length;
+        $state.current.params.sibNumber = ++number;
       }
       else{
         $state.current.params.sibNumber = 1;
       }
       var params = $state.current.params;
       $state.go('^.addSibling',{'id': $scope.locale, 'sibling': params.sibling},{inherit: true})
-      .then(setReturn());
+      .then($scope.setReturn());
     };
-  }])
-  .controller('PdfCtrl', function($scope, $ionicLoading, ReportSvc) {
-    $scope.runReport = _runReport;
-    $scope.clearReport = _clearReport;
-//    _activate();
-    
-/*    function _activate() {        
-//
-// ReportSvc Event Listeners: Progress/Done
-//    used to listen for async progress updates so loading text can change in 
-//    UI to be repsonsive because the report process can be 'lengthy' on 
-//    older devices (chk reportSvc for emitting events)
-//
-		$scope.$on('ReportSvc::Progress', function(event, msg) {
-			_showLoading(msg);
-		});		 
-		$scope.$on('ReportSvc::Done', function(event, err) {
-			_hideLoading();
-		});        
-    }
-*/    
-    function _runReport(data) {
-        //if no cordova, then running in browser and need to use dataURL and iframe
-        if (!window.cordova) {
-            ReportSvc.runReportDataURL( {},{} )
-                .then(function(dataURL) {
-                    //set the iframe source to the dataURL created
-                    console.log('report run in browser using dataURL and iframe');
-                    document.getElementById('pdfImage').src = dataURL;
-                });
-            return true;
-        }
-        //if codrova, then running in device/emulator and able to save file and open w/ InAppBrowser
-        else {
-            ReportSvc.runReportAsync( {},{} )
-                .then(function(filePath) {
-                    //log the file location for debugging and oopen with inappbrowser
-                    console.log('report run on device using File plugin');
-                    console.log('ReportCtrl: Opening PDF File (' + filePath + ')');
-                    window.open(filePath, '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
-                    hideLoading();
-                });
-            return true;
-        }
-	}
-
-    //reset the iframe to show the empty html page from app start
-    function _clearReport() {
-        document.getElementById('pdfImage').src = "empty.html";
-    }
-//
-// Loading UI Functions: utility functions to show/hide loading UI
-//
-    function _showLoading(msg) {
-        $ionicLoading.show({
-          template: msg,
-          scope: $scope
-        });
-    }
-    function _hideLoading(){
-        $ionicLoading.hide();
-    }
-});
+  }]);

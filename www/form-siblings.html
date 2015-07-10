@@ -3,13 +3,13 @@
     <div class="formDataContainer">
       <div class="clearfix formData">
         <div id="nameTemplates" class="formData_container" ng-controller="TransliterationCtrl">
-          <div class="formData_header clearfix">
+          <!-- <div class="formData_header clearfix">
             <div class="nameTemplate_header_selector">
               <label class="nameTemplate_header_selector_label">{{'template' | translate}}:</label>
               <select data-ng-model="selectedTemplate" ng-options="template for template in templates" ng-selected="selectedTemplate" ng-change="change()">
               </select>
             </div>
-          </div>
+          </div> -->
           <div class="formData_inner">
             <div ng-if="!isGrid()">
               <div booklet-names type="linear"></div>

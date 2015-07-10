@@ -332,5 +332,8 @@ var translations_ja = {
   "unknown_gender": "不明",
   "storiesFound_message_RFFM": "あなたの曽祖父について，%{count}件のストーリーが見つかりました。 これらのストーリーのいずれかを使用しますか。または，自分でストーリーを書きますか。",
   "storiesFound_message_RFMM": "あなたの曽祖父について，%{count}件のストーリーが見つかりました。 これらのストーリーのいずれかを使用しますか。または，自分でストーリーを書きますか。",
-  "checking_next_steps": "「次のステップ」を確認しています......"
+  "checking_next_steps": "「次のステップ」を確認しています......",
+
+  "cta_button_pedigree": "PDFのダウンロード",
+  "banner_header_finished": "おめでとうございます"
 };

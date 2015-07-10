@@ -332,5 +332,8 @@ var translations_id = {
   "remove_story": "Hapus Kisah",
   "cancel_story": "Batalkan Kisah",
   "view_stories_count": "Lihat Kisah (%{count})",
-  "write_your_own": "Tulis kisah saya sendiri"
+  "write_your_own": "Tulis kisah saya sendiri",
+
+  "cta_button_pedigree": "Unduh <i>PDF</i>",
+  "banner_header_finished": "Selamat"
 };

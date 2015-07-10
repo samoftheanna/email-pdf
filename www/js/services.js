@@ -38,12 +38,3 @@ angular.module('scouts')
     }
   }
 }]);
-
-angular.module('starter.services', [])
-.run(function() {
-})
-.service('versionSvc', function() {
-    var self = this;
-	self.ver = '1.0.0';
-	return self;
-});

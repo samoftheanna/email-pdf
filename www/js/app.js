@@ -15,7 +15,7 @@ angular.module('test', ['ionic.service.core'])
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.translate', 'starter.services'])
+angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.translate'])
 .config(function($stateProvider, $urlRouterProvider, $translateProvider, $compileProvider){
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
   $translateProvider
@@ -176,7 +176,8 @@ angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.transl
     })
     .state('booklet.pdf', {
       url:'/:id/send',
-      templateUrl: 'partial-pdf.html'
+      templateUrl: 'partial-pdf.html',
+      params: {'generation': '1', 'generationTitle': 'banner_header_finished', 'previous': '^.me','next': 'home'}
     })
   })
 .run(function($ionicPlatform) {
@@ -189,17 +190,5 @@ angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.transl
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    if (window.cordova) {
-      //quick check for presence of ngCordovaFile plugin
-      console.log('starting cordovaFile check');
-      console.log($cordovaFile);
-      //check for the docs directory suing File plugin
-      $cordovaFile.checkDir(cordova.file.documentsDirectory, "")
-      .then(function(success) {
-          console.log(success);
-      }, function(error) {
-          console.log(error);
-      });
-    } else { console.log( ' no cordova plugins available ' ); }
   });
 });

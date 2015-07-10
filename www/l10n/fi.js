@@ -332,5 +332,8 @@ var translations_fi = {
   "remove_story": "Poista kertomus",
   "cancel_story": "Peruuta kertomus",
   "view_stories_count": "Katsele kertomuksia (%{count})",
-  "write_your_own": "Kirjoitan oman kertomuksen"
+  "write_your_own": "Kirjoitan oman kertomuksen",
+
+  "cta_button_pedigree": "Lataa pdf",
+  "banner_header_finished": "Onnittelut"
 };

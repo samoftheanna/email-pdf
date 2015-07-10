@@ -332,5 +332,8 @@ var translations_nl = {
   "unknown_gender": "Onbekend",
   "storiesFound_message_RFFM": "We hebben %{count} verhalen over uw overgrootvader gevonden. Wilt u een van deze verhalen in uw boekje gebruiken OF er zelf een schrijven?",
   "storiesFound_message_RFMM": "We hebben %{count} verhalen over uw overgrootvader gevonden. Wilt u een van deze verhalen in uw boekje gebruiken OF er zelf een schrijven?",
-  "checking_next_steps": "Volgende stappen aan het controleren…"
+  "checking_next_steps": "Volgende stappen aan het controleren…",
+
+  "cta_button_pedigree": "Pdf downloaden",
+  "banner_header_finished": "Gefeliciteerd"
 };

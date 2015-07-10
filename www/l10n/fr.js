@@ -332,5 +332,8 @@ var translations_fr = {
   "unknown_gender": "Inconnu",
   "storiesFound_message_RFFM": "Nous avons trouvé %{count} histoires concernant votre arrière-grand-père. Voulez-vous utiliser l’une de ces histoires dans votre livret OU en rédiger une vous-même ?",
   "storiesFound_message_RFMM": "Nous avons trouvé %{count} histoires concernant votre arrière-grand-père. Voulez-vous utiliser l’une de ces histoires dans votre livret OU en rédiger une vous-même ?",
-  "checking_next_steps": "Vérification des étapes suivantes..."
+  "checking_next_steps": "Vérification des étapes suivantes...",
+
+  "cta_button_pedigree": "Télécharger le fichier PDF",
+  "banner_header_finished": "Félicitations"
 };
