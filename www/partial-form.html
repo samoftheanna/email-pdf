@@ -1,4 +1,4 @@
-<div class="booklet" ng-controller="BookletCtrl">
+<div class="booklet" ng-controller="BookletCtrl" on-swipe-right="goTo(personData.previous)" on-swipe-left="goTo(personData.next)">
   <div id="formHeader">
     <div class="generation-banner generation-{{personData.generation}}">
       <span class="nav-arrow navPrevious" data-ng-click="goTo(personData.previous)" data-ui-sref-opts="{reload: true}"></span>
@@ -11,10 +11,9 @@
   </div>
   <div class="button-container">
     <button class="button secondary center-button" data-ng-click="goTo('^.pdf'); setReturn()" ng-hide="thisPage === 'booklet.pdf'">{{'SaveAndExit' | translate}}</button>
-  <!--  <button class="button tertiary center-button" data-ng-click="goTo('^.pdf')" translate>{{'exit_prompt_all_done'}}</button> -->
     <button class="button tertiary center-button" data-ng-click="goTo('home')" translate>{{'exitbooklet'}}</button>
   </div>
-<!-- testing -->
+<!-- testing
   <p>formData</p>
   <pre>
     {{ formData | json}}
@@ -23,5 +22,5 @@
   <pre>
     {{ personData }}
   </pre>
-
+ -->
 </div>

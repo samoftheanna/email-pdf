@@ -1,14 +1,22 @@
 <table class="nameTemplatesTable">
   <tr>
-    <th translate>{{'first_name'}}</th>
-    <th translate>{{'last_name'}}</th>
+    <th ng-if="!showReversed()" translate>{{'first_name'}}</th>
+    <th ng-if="!showReversed()" translate>{{'last_name'}}</th>
+    <th ng-if="showReversed()" translate>{{'last_name'}}</th>
+    <th ng-if="showReversed()" translate>{{'first_name'}}</th>
   </tr>
   <tr>
-    <td>
+    <td ng-if="!showReversed()">
       <input type="text" name="first names" ng-model="formData[personData.generationTitle].firstName" placeholder="{{'first_name_placeholder' | translate}}">
     </td>
-    <td>
+    <td ng-if="!showReversed()">
       <input type="text" name="last names" ng-model="formData[personData.generationTitle].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+    </td>
+    <td ng-if="showReversed()">
+      <input type="text" name="last names" ng-model="formData[personData.generationTitle].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+    </td>
+    <td ng-if="showReversed()">
+      <input type="text" name="first names" ng-model="formData[personData.generationTitle].firstName" placeholder="{{'first_name_placeholder' | translate}}">
     </td>
   </tr>
 </table>
