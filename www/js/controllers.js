@@ -171,12 +171,10 @@ angular.module('scouts')
     setGender(males,'Male');
     setGender(females, 'Female');
     
+    
     if(!$scope.formData.R_title){
       $scope.formData.R_title = {'living': "true"};
     }
-//    $scope.put = function(key, value) {
-//      $scope.cache.put($state.current.params.generationTitle + '_' + key, value);
-//    };
     
     $scope.locale = $stateParams.id; 
     $translate.use($scope.locale);

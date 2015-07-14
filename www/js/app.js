@@ -63,112 +63,112 @@ angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.transl
     .state('booklet.me',{
       url:'/:id/me',
       templateUrl: 'form-person.html',
-      params: {'generation': '1', 'generationTitle': 'R_title', 'generation_subtitle': 'myFamily_subtitle', 'next': '^.father', 'previous': 'home', 'stories': 'learn_about_me'}
+      params: {'pdfOrder': 1, 'generation': '1', 'generationTitle': 'R_title', 'generation_subtitle': 'myFamily_subtitle', 'next': '^.father', 'previous': 'home', 'stories': 'learn_about_me'}
     })
     .state('booklet.father',{
       url:'/:id/parents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '2', 'generationTitle': 'RM', 'parent': 'father', 'child': 'R_title', 'generation_subtitle': 'father_subtitle', 'spouse': 'RF', 'next': '^.mother', 'previous': '^.me', 'stories': 'stories_message_RM'}
+      params: {'pdfOrder': 2, 'generation': '2', 'generationTitle': 'RM', 'parent': 'father', 'child': 'R_title', 'generation_subtitle': 'father_subtitle', 'spouse': 'RF', 'next': '^.mother', 'previous': '^.me', 'stories': 'stories_message_RM'}
     })
     .state('booklet.mother',{
       url:'/:id/parents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '2', 'generationTitle': 'RF', 'parent': 'mother', 'child': 'R_title', 'generation_subtitle': 'mother_subtitle', 'spouse': 'RM', 'next': '^.siblings', 'previous': '^.father', 'stories': 'stories_message_RF'}
+      params: {'pdfOrder': 3, 'generation': '2', 'generationTitle': 'RF', 'parent': 'mother', 'child': 'R_title', 'generation_subtitle': 'mother_subtitle', 'spouse': 'RM', 'next': '^.siblings', 'previous': '^.father', 'stories': 'stories_message_RF'}
     })
     .state('booklet.siblings',{
       url:'/:id/mySiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '2', 'generationTitle': 'RS_title', 'father': 'RM', 'mother': 'RF', 'sibling': 'R_title', 'next': '^.pgrandfather', 'previous': '^.mother'}
+      params: {'pdfOrder': 4, 'generation': '2', 'generationTitle': 'RS_title', 'father': 'RM', 'mother': 'RF', 'sibling': 'R_title', 'next': '^.pgrandfather', 'previous': '^.mother'}
     })
     .state('booklet.pgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '3', 'generationTitle': 'myFathersFather', 'parent': 'grandfatherRMM', 'child': 'RM',  'generation_subtitle': 'father_subtitle', 'next': '^.pgrandmother', 'previous': '^.siblings', 'stories': 'stories_message_RMM'}
+      params: {'pdfOrder': 5, 'generation': '3', 'generationTitle': 'myFathersFather', 'parent': 'grandfatherRMM', 'child': 'RM',  'generation_subtitle': 'father_subtitle', 'next': '^.pgrandmother', 'previous': '^.siblings', 'stories': 'stories_message_RMM'}
     })
     .state('booklet.pgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '3', 'generationTitle': 'myFathersMother', 'parent': 'grandmotherRMF', 'child': 'RM', 'generation_subtitle': 'mother_subtitle', 'next': '^.psiblings', 'previous': '^.pgrandfather', 'stories': 'stories_message_RMF'}
+      params: {'pdfOrder': 6, 'generation': '3', 'generationTitle': 'myFathersMother', 'parent': 'grandmotherRMF', 'child': 'RM', 'generation_subtitle': 'mother_subtitle', 'next': '^.psiblings', 'previous': '^.pgrandfather', 'stories': 'stories_message_RMF'}
     })
     .state('booklet.psiblings',{
       url:'/:id/fatherSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '3', 'generationTitle': 'myFathersSiblings_title', 'father': 'myFathersFather', 'mother': 'myFathersMother', 'sibling': 'RM', 'next': '^.mgrandfather', 'previous': '^.pgrandmother'}
+      params: {'pdfOrder': 7, 'generation': '3', 'generationTitle': 'myFathersSiblings_title', 'father': 'myFathersFather', 'mother': 'myFathersMother', 'sibling': 'RM', 'next': '^.mgrandfather', 'previous': '^.pgrandmother'}
     })
     .state('booklet.mgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '3', 'generationTitle': 'myMothersFather', 'parent': 'grandfatherRFM', 'child': 'RF',  'generation_subtitle': 'father_subtitle', 'next': '^.mgrandmother', 'previous': '^.psiblings', 'stories': 'stories_message_RFM'}
+      params: {'pdfOrder': 8, 'generation': '3', 'generationTitle': 'myMothersFather', 'parent': 'grandfatherRFM', 'child': 'RF',  'generation_subtitle': 'father_subtitle', 'next': '^.mgrandmother', 'previous': '^.psiblings', 'stories': 'stories_message_RFM'}
     })
     .state('booklet.mgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '3', 'generationTitle': 'myMothersMother', 'parent': 'grandmotherRFF', 'child': 'RF',  'generation_subtitle': 'mother_subtitle', 'next': '^.msiblings', 'previous': '^.mgrandfather', 'stories': 'stories_message_RFF'}
+      params: {'pdfOrder': 9, 'generation': '3', 'generationTitle': 'myMothersMother', 'parent': 'grandmotherRFF', 'child': 'RF',  'generation_subtitle': 'mother_subtitle', 'next': '^.msiblings', 'previous': '^.mgrandfather', 'stories': 'stories_message_RFF'}
     })
     .state('booklet.msiblings',{
       url:'/:id/motherSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '3', 'generationTitle': 'myMothersSiblings_title', 'father': 'myMothersFather', 'mother': 'myMothersMother', 'sibling': 'RF', 'next': '^.ppgrandfather', 'previous': '^.mgrandmother'}
+      params: {'pdfOrder': 10, 'generation': '3', 'generationTitle': 'myMothersSiblings_title', 'father': 'myMothersFather', 'mother': 'myMothersMother', 'sibling': 'RF', 'next': '^.ppgrandfather', 'previous': '^.mgrandmother'}
     })
     .state('booklet.ppgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersFathersFather', 'parent': 'grandfatherRMMM', 'child': 'myFathersFather', 'generation_subtitle': 'father_subtitle', 'next': '^.ppgrandmother', 'previous': '^.msiblings', 'stories': 'stories_message_RMMM'}
+      params: {'pdfOrder': 11, 'generation': '4', 'generationTitle': 'myFathersFathersFather', 'parent': 'grandfatherRMMM', 'child': 'myFathersFather', 'generation_subtitle': 'father_subtitle', 'next': '^.ppgrandmother', 'previous': '^.msiblings', 'stories': 'stories_message_RMMM'}
     })
     .state('booklet.ppgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersFathersMother', 'parent': 'grandmotherRMMF', 'child': 'myFathersFather',  'generation_subtitle': 'mother_subtitle', 'next': '^.ppsiblings', 'previous': '^.ppgrandfather', 'stories': 'stories_message_RMMF'}
+      params: {'pdfOrder': 12, 'generation': '4', 'generationTitle': 'myFathersFathersMother', 'parent': 'grandmotherRMMF', 'child': 'myFathersFather',  'generation_subtitle': 'mother_subtitle', 'next': '^.ppsiblings', 'previous': '^.ppgrandfather', 'stories': 'stories_message_RMMF'}
     })
     .state('booklet.ppsiblings',{
       url:'/:id/grandfatherRMMSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersFathersSiblings_subtitle', 'father': 'myFathersFathersFather', 'mother': 'myFathersFathersMother', 'sibling': 'myFathersFather', 'next': '^.pmgrandfather', 'previous': '^.ppgrandmother'}
+      params: {'pdfOrder': 13, 'generation': '4', 'generationTitle': 'myFathersFathersSiblings_subtitle', 'father': 'myFathersFathersFather', 'mother': 'myFathersFathersMother', 'sibling': 'myFathersFather', 'next': '^.pmgrandfather', 'previous': '^.ppgrandmother'}
     })
     .state('booklet.pmgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersMothersFather', 'parent': 'grandfatherRMFM',  'child': 'myFathersMother', 'generation_subtitle': 'father_subtitle', 'next': '^.pmgrandmother', 'previous': '^.ppsiblings', 'stories': 'stories_message_RMFM'}
+      params: {'pdfOrder': 14, 'generation': '4', 'generationTitle': 'myFathersMothersFather', 'parent': 'grandfatherRMFM',  'child': 'myFathersMother', 'generation_subtitle': 'father_subtitle', 'next': '^.pmgrandmother', 'previous': '^.ppsiblings', 'stories': 'stories_message_RMFM'}
     })
     .state('booklet.pmgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersMothersMother', 'parent': 'grandmotherRMFF', 'child': 'myFathersMother',  'generation_subtitle': 'mother_subtitle', 'next': '^.pmsiblings', 'previous': '^.pmgrandfather', 'stories': 'stories_message_RMFF'}
+      params: {'pdfOrder': 15, 'generation': '4', 'generationTitle': 'myFathersMothersMother', 'parent': 'grandmotherRMFF', 'child': 'myFathersMother',  'generation_subtitle': 'mother_subtitle', 'next': '^.pmsiblings', 'previous': '^.pmgrandfather', 'stories': 'stories_message_RMFF'}
     })
     .state('booklet.pmsiblings',{
       url:'/:id/grandfatherRSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '4', 'generationTitle': 'myFathersMothersSiblings_subtitle', 'father': 'myFathersMothersFather', 'mother': 'myFathersMothersMother', 'sibling': 'myFathersMother', 'next': '^.mpgrandfather', 'previous': '^.pmgrandmother'}
+      params: {'pdfOrder': 16, 'generation': '4', 'generationTitle': 'myFathersMothersSiblings_subtitle', 'father': 'myFathersMothersFather', 'mother': 'myFathersMothersMother', 'sibling': 'myFathersMother', 'next': '^.mpgrandfather', 'previous': '^.pmgrandmother'}
     })
     .state('booklet.mpgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersFathersFather', 'parent': 'grandfatherRFMM',  'child': 'myMothersFather', 'generation_subtitle': 'father_subtitle', 'next': '^.mpgrandmother', 'previous': '^.pmsiblings', 'stories': 'stories_message_RFMM'}
+      params: {'pdfOrder': 17, 'generation': '4', 'generationTitle': 'myMothersFathersFather', 'parent': 'grandfatherRFMM',  'child': 'myMothersFather', 'generation_subtitle': 'father_subtitle', 'next': '^.mpgrandmother', 'previous': '^.pmsiblings', 'stories': 'stories_message_RFMM'}
     })
     .state('booklet.mpgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersFathersMother', 'parent': 'grandmotherRFMF', 'child': 'myMothersFather',  'generation_subtitle': 'mother_subtitle', 'next': '^.mpsiblings', 'previous': '^.mpgrandfather', 'stories': 'stories_message_RFMF'}
+      params: {'pdfOrder': 18, 'generation': '4', 'generationTitle': 'myMothersFathersMother', 'parent': 'grandmotherRFMF', 'child': 'myMothersFather',  'generation_subtitle': 'mother_subtitle', 'next': '^.mpsiblings', 'previous': '^.mpgrandfather', 'stories': 'stories_message_RFMF'}
     })
     .state('booklet.mpsiblings',{
       url:'/:id/grandfatherRMMSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersFathersSiblings_subtitle', 'father': 'myMothersFathersFather', 'mother': 'myMothersFathersMother', 'sibling': 'myMothersFather', 'next': '^.mmgrandfather', 'previous': '^.mpgrandmother'}
+      params: {'pdfOrder': 19, 'generation': '4', 'generationTitle': 'myMothersFathersSiblings_subtitle', 'father': 'myMothersFathersFather', 'mother': 'myMothersFathersMother', 'sibling': 'myMothersFather', 'next': '^.mmgrandfather', 'previous': '^.mpgrandmother'}
     })
     .state('booklet.mmgrandfather',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersMothersFather', 'parent': 'grandfatherRFFM',  'child': 'myMothersMother', 'generation_subtitle': 'father_subtitle', 'next': '^.mmgrandmother', 'previous': '^.mpsiblings', 'stories': 'stories_message_RFFM'}
+      params: {'pdfOrder': 20, 'generation': '4', 'generationTitle': 'myMothersMothersFather', 'parent': 'grandfatherRFFM',  'child': 'myMothersMother', 'generation_subtitle': 'father_subtitle', 'next': '^.mmgrandmother', 'previous': '^.mpsiblings', 'stories': 'stories_message_RFFM'}
     })
     .state('booklet.mmgrandmother',{
       url:'/:id/grandparents/:parent',
       templateUrl: 'form-person.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersMothersMother', 'parent': 'grandmotherRFFF', 'child': 'myMothersMother',  'generation_subtitle': 'mother_subtitle', 'next': '^.mmsiblings', 'previous': '^.mmgrandfather', 'stories': 'stories_message_RFFF'}
+      params: {'pdfOrder': 21, 'generation': '4', 'generationTitle': 'myMothersMothersMother', 'parent': 'grandmotherRFFF', 'child': 'myMothersMother',  'generation_subtitle': 'mother_subtitle', 'next': '^.mmsiblings', 'previous': '^.mmgrandfather', 'stories': 'stories_message_RFFF'}
     })
     .state('booklet.mmsiblings',{
       url:'/:id/grandfatherRSiblings',
       templateUrl: 'form-children.html',
-      params: {'generation': '4', 'generationTitle': 'myMothersMothersSiblings_subtitle', 'father': 'myMothersMothersFather', 'mother': 'myMothersMothersMother', 'sibling': 'myMothersMother', 'next': '^.pdf', 'previous': '^.mmgrandmother'}
+      params: {'pdfOrder': 22, 'generation': '4', 'generationTitle': 'myMothersMothersSiblings_subtitle', 'father': 'myMothersMothersFather', 'mother': 'myMothersMothersMother', 'sibling': 'myMothersMother', 'next': '^.pdf', 'previous': '^.mmgrandmother'}
     })
     .state('booklet.addSibling', {
       url:'/:id/:sibling/add/:sibNumber',
