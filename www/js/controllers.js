@@ -90,7 +90,7 @@ angular.module('scouts')
         'third': '加入有關你家庭的剩餘資料。'
       },
       'it': {
-        'instructions': 'Istruzione',
+        'instructions': 'Istruzioni',
         'first': 'Aggiungi tutte le informazioni che sai sulla tua famiglia.',
         'second': 'Inviale per e-mail a te stesso, a un genitore, a un parente o a un amico per assistenza.',
         'third': 'Aggiungi il resto delle informazioni sulla tua famiglia.'
