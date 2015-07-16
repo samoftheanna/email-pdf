@@ -177,7 +177,7 @@ angular.module('scouts', ['ionic', 'ngCordova', 'ui.router','pascalprecht.transl
     .state('booklet.pdf', {
       url:'/:id/send',
       templateUrl: 'partial-pdf.html',
-      params: {'generation': '1', 'generationTitle': 'banner_header_finished', 'previous': '^.me','next': 'home'}
+      params: {'generation': '1', 'generationTitle': 'banner_header_finished', 'previous': '^.me'}
     })
   })
 .run(function($ionicPlatform) {

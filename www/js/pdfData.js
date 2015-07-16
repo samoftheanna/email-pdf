@@ -1,5 +1,5 @@
 angular.module('scouts')
-  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope){
+  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2){
     var data = $scope.formData;
         
     console.log(data);
@@ -25,23 +25,23 @@ angular.module('scouts')
     var titles = [];
     
     var flattenObject = function(ob) {
-    	var toReturn = {};
-    	
-    	for (var i in ob) {
-    		if (!ob.hasOwnProperty(i)) continue;
-    		
-    		if ((typeof ob[i]) == 'object') {
-    			var flatObject = flattenObject(ob[i]);
-    			for (var x in flatObject) {
-    				if (!flatObject.hasOwnProperty(x)) continue;
-    				
-    				toReturn[i + '.' + x] = flatObject[x];
-    			}
-    		} else {
-    			toReturn[i] = ob[i];
-    		}
-    	}
-    	return toReturn;
+      var toReturn = {};
+      
+      for (var i in ob) {
+        if (!ob.hasOwnProperty(i)) continue;
+        
+        if ((typeof ob[i]) == 'object') {
+          var flatObject = flattenObject(ob[i]);
+          for (var x in flatObject) {
+            if (!flatObject.hasOwnProperty(x)) continue;
+            
+            toReturn[i + '.' + x] = flatObject[x];
+          }
+        } else {
+          toReturn[i] = ob[i];
+        }
+      }
+      return toReturn;
     };
     
     var flatData = flattenObject(data);
@@ -75,7 +75,7 @@ angular.module('scouts')
         var stack1 = [];
         switch(person){
           case 'R_title':
-            if(flatData['R_title.gender'] === 'Female'){ //this doesn't work. because it only works for english. use your brain, jo!
+            if(flatData['R_title.gender'] === 'Female'){ //getting sloppy
               stack1.push({image: 'static-0-female.png', margin: [0,0,0,5]});
             } else {
               stack1.push({image: 'static-0-male.png', margin: [0,0,0,5]});
@@ -193,27 +193,89 @@ angular.module('scouts')
 
 
         var columns = [{stack: stack1, width: '33%'},{stack: stack2, width: '*'}];
-
         return columns;
       };
       
-      var siblings = function(person, sibTitle){
-        var sibPage = [];
+      var siblings = function(sibTitle, genColor){
         if(titles.length > 22){
           var idx = people.indexOf(sibTitle);
-          sibPage.push({text: titles[idx], style: 'header', color: '#82a62e', pageBreak: 'after'});
-          console.log(sibPage);
-          return sibPage;
+          var sibHeadText = titles[idx] || '';
+          if(sibHeadText === ''){
+            return {text: ''};
+          }
+          var sibHeader = "{text: '"+sibHeadText+"', style: 'header', color: '"+genColor+"'}";
+          var bodyInfo = [];
+          var b = '1';
+          while((data[sibTitle] !== undefined) && (data[sibTitle][b] !== undefined)) { //while loop syntax
+            var name = '';
+            if(flatData[sibTitle+'.'+b+'.firstName'] && flatData[sibTitle+'.'+b+'.lastName']){
+              name = flatData[sibTitle+'.'+b+'.firstName'] + ' ' + flatData[sibTitle+'.'+b+'.lastName'];
+            } else if(flatData[sibTitle+'.'+b+'.firstName']){
+              name = flatData[sibTitle+'.'+b+'.firstName'];
+            }
+
+            var nameLine = [];
+            if(flatData[sibTitle+'.'+b+'.gender'] === 'Female'){
+              nameLine.push({image: 'bullet-female.png', alignment: 'center', margin: [0, 5, 0, 0]});
+            }
+            else {
+              nameLine.push({image: 'bullet-male.png', alignment: 'center', margin: [0, 5, 0, 0]});
+            }
+            nameLine.push({text: name, style: 'name'});
+            
+            bodyInfo.push(nameLine);
+            
+            if(flatData[sibTitle+'.'+b+'.birth.date'] || flatData[sibTitle+'.'+b+'.birth.place']){
+              var birthLine = [];
+              birthLine.push({text: titles[6], style: 'subtitle', alignment: 'center'});
+              if(flatData[sibTitle+'.'+b+'.birth.date'] && flatData[sibTitle+'.'+b+'.birth.place']){
+                birthLine.push({stack: [{text: flatData[sibTitle+'.'+b+'.birth.date'], style: 'subtitle', margin: [0, 0, 0, 0]},{text: flatData[sibTitle+'.'+b+'.birth.place'], style:'deets'}]});
+              }
+              else if(flatData[sibTitle+'.'+b+'.birth.date']){
+                birthLine.push({text: flatData[sibTitle+'.'+b+'.birth.date'], style: 'subtitle', margin: [0, 0, 0, 0]});
+              }
+              else if(flatData[sibTitle+'.'+b+'.birth.place']){
+                birthLine.push({text: flatData[sibTitle+'.'+b+'.birth.place'], style:'deets'});
+              }
+              else {
+                birthLine.push({});
+              }
+              bodyInfo.push(birthLine);
+            }
+            
+            if(flatData[sibTitle+'.'+b+'.death.date'] || flatData[sibTitle+'.'+b+'.death.place']){
+              var deathLine = [];
+              deathLine.push({text: titles[6], style: 'subtitle', alignment: 'center'});
+              if(flatData[sibTitle+'.'+b+'.death.date'] && flatData[sibTitle+'.'+b+'.death.place']){
+                deathLine.push({stack: [{text: flatData[sibTitle+'.'+b+'.death.date'], style: 'subtitle', margin: [0, 0, 0, 0]},{text: flatData[sibTitle+'.'+b+'.death.place'], style:'deets'}]});
+              }
+              else if(flatData[sibTitle+'.'+b+'.death.date']){
+                deathLine.push({text: flatData[sibTitle+'.'+b+'.death.date'], style: 'subtitle', margin: [0, 0, 0, 0]});
+              }
+              else if(flatData[sibTitle+'.'+b+'.death.place']){
+                deathLine.push({text: flatData[sibTitle+'.'+b+'.death.place'], style:'deets'});
+              }
+              else {
+                deathLine.push({});
+              }
+              bodyInfo.push(deathLine);
+            }
+
+            b++;
+          }
+          console.log(bodyInfo);
+          var sibPage = "{table: {widths: ['auto', '*'], body: "+bodyInfo+"}, layout: 'noBorders', pageBreak: 'after'}";
+          console.log(sibHeader + sibPage);
+          return sibHeader,sibPage;
         }
         else {
-          return {};
+          return {text: ''};
         }
       };
       
-      siblings('RM', 'myFathersSiblings_title'); //this isn't working to insert the children pages into the content array
+      siblings('myFathersSiblings_title','#fbb14b'); //this isn't working to insert the children pages into the content array
       
-      var mySiblings = [{stack: siblings('R_title','RS_title')}];
-      
+           
       var content = [
       {image: 'cover.png', pageBreak: 'after'},
       {text: titles[21], style: 'header', color: '#00a59b'},
@@ -230,7 +292,9 @@ angular.module('scouts')
       {
         columns: deets('RF'),
         pageBreak: 'after'},
-                
+        
+      siblings('RS_title','#82a62e'),
+        
       {text: titles[8], style: 'header', color: '#fbb14b'},
       {
         columns: deets('myFathersFather'),
@@ -303,12 +367,21 @@ angular.module('scouts')
     };
    
     var createEmail = function(file){
+      $ionicLoading.hide();
       cordova.plugins.email.open({
         subject: 'Greetings',
         attachments: file
       });
     };
     
+    var openPDF = function(filename){
+      $cordovaFileOpener2.open(filename, 'application/pdf')
+      .then(function(){
+        console.log('we opened it!');
+      }, function(error){
+        console.log("yeah. that didn't work " + error);
+      });
+    };
     
     $scope.generate = function(){
       $ionicLoading.show({
@@ -325,7 +398,9 @@ angular.module('scouts')
           section: {margin: [0, 20, 0, 5]},
           subtitle: {fontSize: 21, margin: [0, 0, 0, 20]},
           quote: {fontSize: 24},
-          subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 0]}
+          subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 0]},
+          name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 20]},
+          deets: {fontSize: 14}
         }
       };
       
@@ -335,37 +410,37 @@ angular.module('scouts')
           $ionicLoading.hide();
         }
         else {
-          var data;
-          pdfMake.createPdf(docDefinition).getBase64(function(encodedString) {
-            data = encodedString;
-          });
+          var pdfDoc = pdfMake.createPdf(docDefinition);
   
-/*          var pdfBuffer = pdfDoc.getBuffer(function(){
+          var pdfBuffer = pdfDoc.getBuffer(function(){
             console.log('getting somewhere?');
-          }); */
+          });
           
-          var pdfBlob = new Blob([data], {type: 'application/pdf'});
+          var pdfBlob = new Blob([pdfBuffer], {type: 'application/pdf'});
           
           $cordovaFile.writeFile(cordova.file.dataDirectory, "my_booklet.pdf", pdfBlob,  true)
           .then(function (success) {
             // success
-            console.log('we wrote a new file! ' + success);
             $ionicLoading.hide();
+            console.log('we wrote a new file! ' + success);
             $cordovaFile.checkFile(cordova.file.dataDirectory, "my_booklet.pdf")
             .then(function (success) {
               // success
+              $ionicLoading.hide();
               console.log('when checking your booklet:');
               console.dir(success);
               var nativeURL = success.nativeURL;
 
-              createEmail(nativeURL);
-    //          openPDF(nativeURL);
+//              createEmail(nativeURL);
+              openPDF(nativeURL);
             }, function (error) {
               // error
+              $ionicLoading.hide();
               console.log("checking a file didn't work " + error.message);
             });
           }, function (error) {
             // error
+            $ionicLoading.hide();
             console.log("creating a file didn't work: " + error.message);
           });
           

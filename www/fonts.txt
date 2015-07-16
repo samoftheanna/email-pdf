@@ -1,0 +1,8 @@
+ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ ゴシック","MS Gothic",sans-serif  .locale-ja
+
+"Apple SD Gothic Neo","애플고딕",AppleGothic,"맑은 고딕","Malgun Gothic","굴림",Gulim,sans-serif  .locale-ko
+
+黑體-繁","Heiti TC","华文细黑",STXihei,"微軟正黑體","Microsoft JengHei","中易黑体",SimHei,sans-serif  .locale-zh
+
+museo_cyrl,sans-serif .locale-ru 
+
