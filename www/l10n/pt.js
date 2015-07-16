@@ -126,7 +126,7 @@ var translations_pt = {
   "stories_message_RFMF": "Escreva histórias e recordações sobre sua bisavó.",
   "stories_message_RFFM": "Escreva histórias e recordações sobre seu bisavô.",
   "stories_message_RFFF": "Escreva histórias e recordações sobre sua bisavó.",
-  "add_sibling": "Acrescentar outro filho(a) do livreto.",
+  "add_sibling": "Acrescentar outros filhos.",
   "add_story": "Acrescentar a história",
   "SaveAndContinue": "Continuar",
   "exitbooklet": "Sair da ferramenta de transferência de informações do livreto",
