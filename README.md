@@ -11,3 +11,4 @@
 - skip ancestors of people without names
 - get default text "false" to not show if living/deceased/unknown not selected (can't show english on language versions)
 - get images taken using camera api on device to persist and add to pdf
+- refactor code to not be messy :)
