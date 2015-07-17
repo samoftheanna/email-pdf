@@ -6,6 +6,7 @@
   - ideally there would be a way to open/email the pdf from within Ionic View, but since it only supports [a limited number of plugins](http://docs.ionic.io/v1.0/docs/view-usage), we may not have that luxury.
 - get generated pdf to email safely
 - reverse order of names for cjk languages
+- fix fonts in pdf so russian, chinese, japanese, korean, and thai characters appear
 - pass list of children table successfully to the pdfMake content array
 - skip ancestors of people without names
 - get default text "false" to not show if living/deceased/unknown not selected (can't show english on language versions)
