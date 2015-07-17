@@ -366,10 +366,12 @@ angular.module('scouts')
       content = content.concat(booklet());
     };
    
+    var filename = "my_booklet_"+flatData['R_title.lastName']+"-"+flatData['R_title.firstName']+".pdf";
+    console.log(filename);
+   
     var createEmail = function(file){
       $ionicLoading.hide();
       cordova.plugins.email.open({
-        subject: 'Greetings',
         attachments: file
       });
     };
@@ -406,7 +408,7 @@ angular.module('scouts')
       
       $ionicPlatform.ready(function() {
         if(!window.cordova){
-          pdfMake.createPdf(docDefinition).download();
+          pdfMake.createPdf(docDefinition).download(filename);
           $ionicLoading.hide();
         }
         else {
@@ -414,12 +416,12 @@ angular.module('scouts')
             console.log(result);
             var pdfBlob = new Blob([result], {type: 'application/pdf'});
             console.log(pdfBlob);
-            $cordovaFile.writeFile(cordova.file.dataDirectory, "my_booklet.pdf", pdfBlob,  true)
+            $cordovaFile.writeFile(cordova.file.dataDirectory, filename, pdfBlob,  true)
             .then(function (success) {
               // success
               $ionicLoading.hide();
               console.log('we wrote a new file! ' + success);
-              $cordovaFile.checkFile(cordova.file.dataDirectory, "my_booklet.pdf")
+              $cordovaFile.checkFile(cordova.file.dataDirectory, filename)
               .then(function (success) {
                 // success
                 $ionicLoading.hide();
@@ -427,8 +429,8 @@ angular.module('scouts')
                 console.dir(success);
                 var nativeURL = success.nativeURL;
   
-  //              createEmail(nativeURL);
-                openPDF(nativeURL);
+                createEmail(nativeURL);
+  //              openPDF(nativeURL);
               }, function (error) {
                 // error
                 $ionicLoading.hide();
