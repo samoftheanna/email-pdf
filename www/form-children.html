@@ -11,7 +11,7 @@
             </div>
             <div class="childData">
               <h2 class="childName">{{formData[personData.sibling].firstName}} {{formData[personData.sibling].lastName}}</h2>
-              <h3 class="childDates">{{formData[personData.sibling].birth.date}} - {{formData[personData.sibling].death.date || formData[personData.sibling].living === 'true' && ('living_tag' | translate) || formData[personData.sibling].living === 'unknown' && ('unknown_living' | translate) || formData[personData.sibling].living === 'false' && ('deceased_tag' | translate)}}</h3>
+              <h3 class="childDates">{{formData[personData.sibling].birth.date}} - {{formData[personData.sibling].death.date || formData[personData.sibling].living === 'true' && ('living_tag' | translate) || formData[personData.sibling].living === 'false' && ('deceased_tag' | translate) || ('unknown_living' | translate)}}</h3>
             </div>
           </div>
         </div>

@@ -410,40 +410,36 @@ angular.module('scouts')
           $ionicLoading.hide();
         }
         else {
-          var pdfDoc = pdfMake.createPdf(docDefinition);
-  
-          var pdfBuffer = pdfDoc.getBuffer(function(){
-            console.log('getting somewhere?');
-          });
-          
-          var pdfBlob = new Blob([pdfBuffer], {type: 'application/pdf'});
-          
-          $cordovaFile.writeFile(cordova.file.dataDirectory, "my_booklet.pdf", pdfBlob,  true)
-          .then(function (success) {
-            // success
-            $ionicLoading.hide();
-            console.log('we wrote a new file! ' + success);
-            $cordovaFile.checkFile(cordova.file.dataDirectory, "my_booklet.pdf")
+          pdfMake.createPdf(docDefinition).getBuffer(function(result){
+            console.log(result);
+            var pdfBlob = new Blob([result], {type: 'application/pdf'});
+            console.log(pdfBlob);
+            $cordovaFile.writeFile(cordova.file.dataDirectory, "my_booklet.pdf", pdfBlob,  true)
             .then(function (success) {
               // success
               $ionicLoading.hide();
-              console.log('when checking your booklet:');
-              console.dir(success);
-              var nativeURL = success.nativeURL;
-
-//              createEmail(nativeURL);
-              openPDF(nativeURL);
+              console.log('we wrote a new file! ' + success);
+              $cordovaFile.checkFile(cordova.file.dataDirectory, "my_booklet.pdf")
+              .then(function (success) {
+                // success
+                $ionicLoading.hide();
+                console.log('when checking your booklet:');
+                console.dir(success);
+                var nativeURL = success.nativeURL;
+  
+  //              createEmail(nativeURL);
+                openPDF(nativeURL);
+              }, function (error) {
+                // error
+                $ionicLoading.hide();
+                console.log("checking a file didn't work " + error.message);
+              });
             }, function (error) {
               // error
               $ionicLoading.hide();
-              console.log("checking a file didn't work " + error.message);
+              console.log("creating a file didn't work: " + error.message);
             });
-          }, function (error) {
-            // error
-            $ionicLoading.hide();
-            console.log("creating a file didn't work: " + error.message);
           });
-          
         }
       }); 
     };
