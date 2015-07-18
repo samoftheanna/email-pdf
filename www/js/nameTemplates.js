@@ -49,12 +49,5 @@ angular.module('scouts')
           $scope.selectedTemplate === 'Chinese' ||
           $scope.selectedTemplate === 'Thai') return true;
       return false;
-    };
-    
-    $scope.showReversed = function() {
-      if( $scope.locale === 'ja' ||
-          $scope.locale === 'ko' ||
-          $scope.locale === 'zh') return true;
-      return false;
-    };
+    };    
   });

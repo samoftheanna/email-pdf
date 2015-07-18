@@ -195,15 +195,24 @@ angular.module('scouts')
         var columns = [{stack: stack1, width: '33%'},{stack: stack2, width: '*'}];
         return columns;
       };
-      
-      var siblings = function(sibTitle, genColor){
+
+      var sibHead = function(sibTitle, genColor){
         if(titles.length > 22){
           var idx = people.indexOf(sibTitle);
           var sibHeadText = titles[idx] || '';
           if(sibHeadText === ''){
             return {text: ''};
           }
-          var sibHeader = "{text: '"+sibHeadText+"', style: 'header', color: '"+genColor+"'}";
+          var sibHeader = {text: sibHeadText, style: 'header', color: genColor};
+          return sibHeader;
+        }
+        else {
+          return {text: ''};
+        }
+      };
+      
+      var siblings = function(sibTitle){
+        if(titles.length > 22){
           var bodyInfo = [];
           var b = '1';
           while((data[sibTitle] !== undefined) && (data[sibTitle][b] !== undefined)) { //while loop syntax
@@ -263,18 +272,20 @@ angular.module('scouts')
 
             b++;
           }
-          console.log(bodyInfo);
-          var sibPage = "{table: {widths: ['auto', '*'], body: "+bodyInfo+"}, layout: 'noBorders', pageBreak: 'after'}";
-          console.log(sibHeader + sibPage);
-          return sibHeader,sibPage;
+          var idx = people.indexOf(sibTitle);
+            var sibHeadText = titles[idx] || '';
+            if(sibHeadText === ''){
+              return {text: ''};
+            }
+
+          var sibPage = {table: {widths: ['auto', '*'], body: bodyInfo}, layout: 'noBorders', pageBreak: 'after'};
+          return sibPage;
         }
         else {
           return {text: ''};
         }
       };
-      
-      siblings('myFathersSiblings_title','#fbb14b'); //this isn't working to insert the children pages into the content array
-      
+            
            
       var content = [
       {image: 'cover.png', pageBreak: 'after'},
@@ -292,8 +303,9 @@ angular.module('scouts')
       {
         columns: deets('RF'),
         pageBreak: 'after'},
-        
-      siblings('RS_title','#82a62e'),
+      
+      sibHead('RS_title','#82a62e'),
+      siblings('RS_title'),
         
       {text: titles[8], style: 'header', color: '#fbb14b'},
       {
@@ -305,6 +317,9 @@ angular.module('scouts')
         columns: deets('myFathersMother'),
         pageBreak: 'after'},
       
+      sibHead('myFathersSiblings_title','#fbb14b'),
+      siblings('myFathersSiblings_title'),
+        
       {text: titles[9], style: 'header', color: '#fbb14b'},
       {
         columns: deets('myMothersFather'),
@@ -315,6 +330,9 @@ angular.module('scouts')
         columns: deets('myMothersMother'),
         pageBreak: 'after'},
       
+      sibHead('myMothersSiblings_title','#fbb14b'),
+      siblings('myMothersSiblings_title'),
+        
       {text: titles[10], style: 'header', color: '#0051c4'},
       {
         columns: deets('myFathersFathersFather'),
@@ -325,6 +343,9 @@ angular.module('scouts')
         columns: deets('myFathersFathersMother'),
         pageBreak: 'after'},
       
+      sibHead('myFathersFathersSiblings','#0051c4'),
+      siblings('myFathersFathersSiblings'),
+        
       {text: titles[11], style: 'header', color: '#0051c4'},
       {
         columns: deets('myFathersMothersFather'),
@@ -335,6 +356,9 @@ angular.module('scouts')
         columns: deets('myFathersMothersMother'),
         pageBreak: 'after'},
       
+      sibHead('myFathersMothersSiblings','#0051c4'),
+      siblings('myFathersMothersSiblings'),
+        
       {text: titles[12], style: 'header', color: '#0051c4'},
       {
         columns: deets('myMothersFathersFather'),
@@ -345,6 +369,9 @@ angular.module('scouts')
         columns: deets('myMothersFathersMother'),
         pageBreak: 'after'},
       
+      sibHead('myMothersFathersSiblings','#0051c4'),
+      siblings('myMothersFathersSiblings'),
+        
       {text: titles[13], style: 'header', color: '#0051c4'},
       {
         columns: deets('myMothersMothersFather'),
@@ -353,7 +380,10 @@ angular.module('scouts')
       {text: titles[20], style: 'header', color: '#0051c4'},
       {
         columns: deets('myMothersMothersMother'),
-        pageBreak: 'after'}
+        pageBreak: 'after'},
+
+      sibHead('myMothersFathersSiblings','#0051c4'),
+      siblings('myMothersFathersSiblings')        
       ];
 
       return content;
@@ -364,6 +394,7 @@ angular.module('scouts')
 
     var createContentArray = function(){
       content = content.concat(booklet());
+      console.log(content);
     };
    
     var filename = "my_booklet_"+flatData['R_title.lastName']+"-"+flatData['R_title.firstName']+".pdf";
@@ -401,7 +432,7 @@ angular.module('scouts')
           subtitle: {fontSize: 21, margin: [0, 0, 0, 20]},
           quote: {fontSize: 24},
           subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 0]},
-          name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 20]},
+          name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 10]},
           deets: {fontSize: 14}
         }
       };

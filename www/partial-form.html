@@ -3,7 +3,10 @@
     <div class="generation-banner generation-{{personData.generation}}">
       <span class="nav-arrow navPrevious" data-ng-click="goTo(personData.previous)" data-ui-sref-opts="{reload: true}"></span>
       <h1 class="serif" translate>{{personData.generationTitle}}</h1>
-      <h2 class="serif" translate translate-values="{'child': formData[personData.child].firstName + ' ' + formData[personData.child].lastName}" ng-show="personData.generation_subtitle">{{personData.generation_subtitle}}</h2>
+      <h2 ng-if="!showReversed()" class="serif" translate translate-values="{'child': formData[personData.child].firstName + ' ' + formData[personData.child].lastName}" ng-show="personData.generation_subtitle">{{personData.generation_subtitle}}</h2>
+
+      <h2 ng-if="showReversed()" class="serif" translate translate-values="{'child': formData[personData.child].lastName + ' ' + formData[personData.child].firstName}" ng-show="personData.generation_subtitle">{{personData.generation_subtitle}}</h2>
+
       <span class="nav-arrow navNext" data-ng-click="goTo(personData.next)" data-ui-sref-opts="{reload: true}"></span>
     </div>
   </div>

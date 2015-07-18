@@ -171,6 +171,12 @@ angular.module('scouts')
     setGender(males,'Male');
     setGender(females, 'Female');
     
+    $scope.showReversed = function() {
+      if( $scope.locale === 'ja' ||
+          $scope.locale === 'ko' ||
+          $scope.locale === 'zh') return true;
+      return false;
+    };
     
     if(!$scope.formData.R_title){
       $scope.formData.R_title = {'living': "true"};

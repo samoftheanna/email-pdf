@@ -2,7 +2,11 @@
   <div id="children" class="children-container">
   <div class="form_fields_container">
     <div>
-      <h1 class="children-heading" translate translate-values="{'father': formData[personData.father].firstName + ' ' + formData[personData.father].lastName, 'mother': formData[personData.mother].firstName + ' ' + formData[personData.mother].lastName}">{{'children_of'}}</h1>
+      <h1 ng-if="!showReversed()" class="children-heading" translate translate-values="{'father': formData[personData.father].firstName + ' ' + formData[personData.father].lastName, 'mother': formData[personData.mother].firstName + ' ' + formData[personData.mother].lastName}">{{'children_of'}}</h1>
+
+      <h1 ng-if="showReversed()" class="children-heading" translate translate-values="{'father': formData[personData.father].lastName + ' ' + formData[personData.father].firstName, 'mother': formData[personData.mother].lastName + ' ' + formData[personData.mother].firstName}">{{'children_of'}}</h1>
+
+
       <div>
         <div class="clearfix">
           <div class="child disabledChild clearfix">
@@ -10,7 +14,11 @@
               <img ng-src="{{formData[personData.sibling].gender === 'Female' ? 'assets/img/icon/inactive-mother.png' : 'assets/img/icon/unknown.png'}}">
             </div>
             <div class="childData">
-              <h2 class="childName">{{formData[personData.sibling].firstName}} {{formData[personData.sibling].lastName}}</h2>
+              <h2 ng-if="!showReversed()" class="childName">{{formData[personData.sibling].firstName}} {{formData[personData.sibling].lastName}}</h2>
+
+              <h2 ng-if="showReversed()" class="childName">{{formData[personData.sibling].lastName}} {{formData[personData.sibling].firstName}}</h2>
+
+
               <h3 class="childDates">{{formData[personData.sibling].birth.date}} - {{formData[personData.sibling].death.date || formData[personData.sibling].living === 'true' && ('living_tag' | translate) || formData[personData.sibling].living === 'false' && ('deceased_tag' | translate) || ('unknown_living' | translate)}}</h3>
             </div>
           </div>
@@ -22,7 +30,11 @@
             <img ng-src="{{person.gender === 'Female' ? 'assets/img/icon/sister.png' : 'assets/img/icon/brother.png'}}">
           </div>
           <div class="childData">
-            <h2 class="childName">{{person.firstName}} {{person.lastName}}</h2>
+            <h2 ng-if="!showReversed()" class="childName">{{person.firstName}} {{person.lastName}}</h2>
+
+            <h2 ng-if="showReversed()" class="childName">{{person.lastName}} {{person.firstName}}</h2>
+
+
             <h3 class="childDates">{{person.birth.date}} - {{person.death.date || person.living === 'true' && ('living_tag' | translate) || person.living === 'false' && ('deceased_tag' | translate) || ('unknown_living' | translate)}}</h3>
           </div>
         </a>
