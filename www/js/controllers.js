@@ -5,7 +5,7 @@ angular.module('scouts')
   .controller('LangListCtrl', function($translate, $scope){
   $scope.supportedLanguages = [
     {'language': 'Chinese',
-     'label': '简体中文',
+     'label': '中文',
      'code':'zh'},
     {'language': 'Dutch',
      'label': 'Nederlands',
@@ -84,9 +84,9 @@ angular.module('scouts')
         'third': 'เพิ่มข้อมูลที่เหลือเกี่ยวกับครอบครัวของท่าน'
       },
       'zh': {
-        'instructions': '说明',
+        'instructions': '說明',
         'first': '盡可能地把你所知道的家庭資料都加進 去。',
-        'second': '將它透過電子郵件寄給自己、父母親、親 戚或朋友來取得協助。',
+        'second': '將它透過電子郵件寄給自己、父母親、親戚、或朋友來取得協助。',
         'third': '加入有關你家庭的剩餘資料。'
       },
       'it': {
