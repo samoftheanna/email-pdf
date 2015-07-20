@@ -250,7 +250,7 @@ angular.module('scouts')
             
             if(flatData[sibTitle+'.'+b+'.death.date'] || flatData[sibTitle+'.'+b+'.death.place']){
               var deathLine = [];
-              deathLine.push({text: titles[6], style: 'subtitle', alignment: 'center'});
+              deathLine.push({text: titles[5], style: 'subtitle', alignment: 'center'});
               if(flatData[sibTitle+'.'+b+'.death.date'] && flatData[sibTitle+'.'+b+'.death.place']){
                 deathLine.push({stack: [{text: flatData[sibTitle+'.'+b+'.death.date'], style: 'subtitle', margin: [0, 0, 0, 0]},{text: flatData[sibTitle+'.'+b+'.death.place'], style:'deets'}]});
               }
@@ -339,8 +339,8 @@ angular.module('scouts')
         columns: deets('myFathersFathersMother'),
         pageBreak: 'after'},
       
-      sibHead('myFathersFathersSiblings','#0051c4'),
-      siblings('myFathersFathersSiblings'),
+      sibHead('myFathersFathersSiblings_subtitle','#0051c4'),
+      siblings('myFathersFathersSiblings_subtitle'),
         
       {text: titles[11], style: 'header', color: '#0051c4'},
       {
@@ -352,8 +352,8 @@ angular.module('scouts')
         columns: deets('myFathersMothersMother'),
         pageBreak: 'after'},
       
-      sibHead('myFathersMothersSiblings','#0051c4'),
-      siblings('myFathersMothersSiblings'),
+      sibHead('myFathersMothersSiblings_subtitle','#0051c4'),
+      siblings('myFathersMothersSiblings_subtitle'),
         
       {text: titles[12], style: 'header', color: '#0051c4'},
       {
@@ -365,8 +365,8 @@ angular.module('scouts')
         columns: deets('myMothersFathersMother'),
         pageBreak: 'after'},
       
-      sibHead('myMothersFathersSiblings','#0051c4'),
-      siblings('myMothersFathersSiblings'),
+      sibHead('myMothersFathersSiblings_subtitle','#0051c4'),
+      siblings('myMothersFathersSiblings_subtitle'),
         
       {text: titles[13], style: 'header', color: '#0051c4'},
       {
@@ -378,8 +378,8 @@ angular.module('scouts')
         columns: deets('myMothersMothersMother'),
         pageBreak: 'after'},
 
-      sibHead('myMothersFathersSiblings','#0051c4'),
-      siblings('myMothersFathersSiblings')        
+      sibHead('myMothersFathersSiblings_subtitle','#0051c4'),
+      siblings('myMothersFathersSiblings_subtitle')        
       ];
 
       return content;
@@ -425,7 +425,7 @@ angular.module('scouts')
           section: {margin: [0, 20, 0, 5]},
           subtitle: {fontSize: 21, margin: [0, 0, 0, 20]},
           quote: {fontSize: 24},
-          subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 0]},
+          subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 5]},
           name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 0]},
           deets: {fontSize: 14}
         }

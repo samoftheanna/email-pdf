@@ -235,7 +235,6 @@ angular.module('scouts')
 
     $scope.setReturn = function(){
       $scope.returnTo = returnTo;
-      console.log('i set your return ' + $scope.returnTo + ' ' + returnTo);
     };
     
     $scope.setSibNumber = function(number){
@@ -248,7 +247,6 @@ angular.module('scouts')
         var info = $scope.formData;
         var number = Object.keys(info[gen]).length;
         $state.current.params.sibNumber = ++number;
-        console.log('sibNumber is ' + $state.current.params.sibNumber);
       }
       else{
         $state.current.params.sibNumber = 1;
