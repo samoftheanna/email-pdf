@@ -5,6 +5,14 @@
     <li>{{localized.second}}</li>
     <li>{{localized.third}}</li>
   </ol>
-  <a class="home-button" ui-sref="home"></a>
-  <a ng-click="changeLanguage('{{localized.code}}')" class="continue-button" ng-href="#/booklet/{{localized.code}}/me"></a>
+  <a class="home-button" ui-sref="home">
+  	<div class="nav-language-arrow">
+  		<span class="nav-arrow large navNext"></span>
+  	</div>
+  </a>
+  <a ng-click="changeLanguage('{{localized.code}}')" class="continue-button" ng-href="#/booklet/{{localized.code}}/me">
+	<div class="nav-language-arrow">
+		<span class="nav-arrow large navNext"></span>
+	</div>
+  </a>
 </div>
