@@ -201,6 +201,7 @@ angular.module('scouts')
         
     $scope.countSiblings = function(obj){
       if(obj){
+        console.log('siblings are ' + Object.keys(obj).length);
         return Object.keys(obj).length;
       }
     };
@@ -248,6 +249,7 @@ angular.module('scouts')
         var info = $scope.formData;
         var number = Object.keys(info[gen]).length;
         $state.current.params.sibNumber = ++number;
+        console.log('sibNumber is ' + $state.current.params.sibNumber);
       }
       else{
         $state.current.params.sibNumber = 1;

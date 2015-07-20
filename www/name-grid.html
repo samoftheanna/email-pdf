@@ -5,7 +5,7 @@
     <th ng-if="showReversed()" translate>{{'last_name'}}</th>
     <th ng-if="showReversed()" translate>{{'first_name'}}</th>
   </tr>
-  <tr>
+  <tr ng-if="!personData.sibling">
     <td ng-if="!showReversed()">
       <input type="text" name="first names" ng-model="formData[personData.generationTitle].firstName" placeholder="{{'first_name_placeholder' | translate}}">
     </td>
@@ -17,6 +17,20 @@
     </td>
     <td ng-if="showReversed()">
       <input type="text" name="first names" ng-model="formData[personData.generationTitle].firstName" placeholder="{{'first_name_placeholder' | translate}}">
+    </td>
+  </tr>
+  <tr ng-if="personData.sibling">
+    <td ng-if="!showReversed()">
+      <input type="text" name="first names" ng-model="formData[personData.generationTitle][personData.sibNumber].firstName" placeholder="{{'first_name_placeholder' | translate}}">
+    </td>
+    <td ng-if="!showReversed()">
+      <input type="text" name="last names" ng-model="formData[personData.generationTitle][personData.sibNumber].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+    </td>
+    <td ng-if="showReversed()">
+      <input type="text" name="last names" ng-model="formData[personData.generationTitle][personData.sibNumber].lastName" placeholder="{{'last_name_placeholder' | translate}}">
+    </td>
+    <td ng-if="showReversed()">
+      <input type="text" name="first names" ng-model="formData[personData.generationTitle][personData.sibNumber].firstName" placeholder="{{'first_name_placeholder' | translate}}">
     </td>
   </tr>
 </table>
