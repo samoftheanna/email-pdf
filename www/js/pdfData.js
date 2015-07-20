@@ -2,7 +2,6 @@ angular.module('scouts')
   .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2){
     var data = $scope.formData;
         
-    console.log(data);
     
     var people = Object.getOwnPropertyNames(data);
     people = people.slice(6);
@@ -12,7 +11,6 @@ angular.module('scouts')
     strings = labels.forEach(function(element, index, array){
       people.unshift(element);
     });
-    console.log(people);
 
     $translate(people).then(function(translations){
       for(var i=0; i < people.length; i++){
@@ -45,7 +43,6 @@ angular.module('scouts')
     };
     
     var flatData = flattenObject(data);
-    console.log(flatData);
     
     
     pdfMake.fonts = { //need to find out what fonts to use for cjk/rus/thai, adjust based on locale
@@ -182,7 +179,6 @@ angular.module('scouts')
         }
         if((person === 'R_title') && (flatData['R_title.story'])){
           stack2.push({text: titles[1], style: 'subhead'});
-          console.log(titles);
         }
         if(flatData[person+'.story']){
           stack2.push({text: flatData[person+'.story']});
@@ -394,11 +390,9 @@ angular.module('scouts')
 
     var createContentArray = function(){
       content = content.concat(booklet());
-      console.log(content);
     };
    
     var filename = "my_booklet_"+flatData['R_title.lastName']+"-"+flatData['R_title.firstName']+".pdf";
-    console.log(filename);
    
     var createEmail = function(file){
       $ionicLoading.hide();
@@ -412,7 +406,7 @@ angular.module('scouts')
       .then(function(){
         console.log('we opened it!');
       }, function(error){
-        console.log("yeah. that didn't work " + error);
+        console.log(error);
       });
     };
     
@@ -432,7 +426,7 @@ angular.module('scouts')
           subtitle: {fontSize: 21, margin: [0, 0, 0, 20]},
           quote: {fontSize: 24},
           subhead: {fontSize: 18, bold: true, margin: [0, 10, 0, 0]},
-          name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 10]},
+          name: {font: 'museo', fontSize: 21, margin: [0, 0, 0, 0]},
           deets: {fontSize: 14}
         }
       };
@@ -444,9 +438,7 @@ angular.module('scouts')
         }
         else {
           pdfMake.createPdf(docDefinition).getBuffer(function(result){
-            console.log(result);
             var pdfBlob = new Blob([result], {type: 'application/pdf'});
-            console.log(pdfBlob);
             $cordovaFile.writeFile(cordova.file.dataDirectory, filename, pdfBlob,  true)
             .then(function (success) {
               // success
@@ -457,7 +449,6 @@ angular.module('scouts')
                 // success
                 $ionicLoading.hide();
                 console.log('when checking your booklet:');
-                console.dir(success);
                 var nativeURL = success.nativeURL;
   
                 createEmail(nativeURL);

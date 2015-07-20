@@ -201,7 +201,6 @@ angular.module('scouts')
         
     $scope.countSiblings = function(obj){
       if(obj){
-        console.log('siblings are ' + Object.keys(obj).length);
         return Object.keys(obj).length;
       }
     };
