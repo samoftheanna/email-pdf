@@ -88,7 +88,7 @@ var translations_es = {
   "last_name_placeholder": "Agregar apellido(s)",
   "suffix": "Sufijo",
   "gender": "Sexo",
-  "male": "Masculino",
+  "male": "Hombre",
   "female": "Mujer",
   "unknown": "Desconocido",
   "unknown_spouse": "Cónyuge desconocido",
