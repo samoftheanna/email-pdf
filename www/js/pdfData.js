@@ -58,6 +58,23 @@ angular.module('scouts')
        italics: 'museo_slab_500-webfont.ttf',
        bolditalics: 'museo_slab_500-webfont.ttf'
      }
+    };
+    
+    if ($scope.showReversed()){
+      pdfMake.fonts = {
+        proximaNova: {
+         normal: 'Roboto-Regular.ttf',
+         bold: 'Roboto-Medium.ttf',
+         italics: 'Roboto-Italic.ttf',
+         bolditalics: 'Roboto-Italic.ttf'
+       },
+        museo: {
+         normal: 'Roboto-Regular.ttf',
+         bold: 'Roboto-Medium.ttf',
+         italics: 'Roboto-Italic.ttf',
+         bolditalics: 'Roboto-Italic.ttf'
+       }
+      };
     }
             
     var booklet = function(){
