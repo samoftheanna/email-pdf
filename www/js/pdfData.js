@@ -60,19 +60,36 @@ angular.module('scouts')
      }
     };
     
-    if ($scope.showReversed()){
+    if($scope.locale === 'th'){
       pdfMake.fonts = {
         proximaNova: {
-         normal: 'Roboto-Regular.ttf',
-         bold: 'Roboto-Medium.ttf',
-         italics: 'Roboto-Italic.ttf',
-         bolditalics: 'Roboto-Italic.ttf'
+         normal: 'NotoSansThai.ttf',
+         bold: 'NotoSansThai.ttf',
+         italics: 'NotoSansThai.ttf',
+         bolditalics: 'NotoSansThai.ttf'
        },
         museo: {
-         normal: 'Roboto-Regular.ttf',
-         bold: 'Roboto-Medium.ttf',
-         italics: 'Roboto-Italic.ttf',
-         bolditalics: 'Roboto-Italic.ttf'
+         normal: 'NotoSansThai.ttf',
+         bold: 'NotoSansThai.ttf',
+         italics: 'NotoSansThai.ttf',
+         bolditalics: 'NotoSansThai.ttf'
+       }
+      };      
+    }
+        
+    if ($scope.showReversed() || ($scope.locale === 'ru')){
+      pdfMake.fonts = {
+        proximaNova: {
+         normal: 'Gulim.ttf',
+         bold: 'Gulim.ttf',
+         italics: 'Gulim.ttf',
+         bolditalics: 'Gulim.ttf'
+       },
+        museo: {
+         normal: 'Gulim.ttf',
+         bold: 'Gulim.ttf',
+         italics: 'Gulim.ttf',
+         bolditalics: 'Gulim.ttf'
        }
       };
     }
