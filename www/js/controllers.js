@@ -155,7 +155,8 @@ angular.module('scouts')
 //    $scope.cache = bookletCache;
 
     $scope.formData = bookletCache;
-    var resetFormData = angular.copy($scope.formData);
+//    var resetFormData = angular.copy($scope.formData);
+    var resetFormData = {};
 
     var males = ['RM','myFathersFather','myMothersFather','myFathersFathersFather','myFathersMothersFather','myMothersFathersFather','myMothersMothersFather'];
     var females = ['RF','myFathersMother','myMothersMother','myFathersFathersMother','myFathersMothersMother','myMothersFathersMother','myMothersMothersMother'];
@@ -197,9 +198,11 @@ angular.module('scouts')
     };
 
     $scope.clearData = function(){
-      console.log('hey. i should delete');
-      angular.copy(resetPersonData, $scope.personData);
       angular.copy(resetFormData, $scope.formData);
+      angular.copy(resetPersonData, $scope.personData);
+      if($state.current.params.sibNumber){
+        $state.current.params.sibNumber = undefined;
+      }
     };
 
     $scope.goTo = function(state){
