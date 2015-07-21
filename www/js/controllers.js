@@ -196,7 +196,17 @@ angular.module('scouts')
     };
     
     $scope.goTo = function(state){
-      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true});
+      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true}).
+      then(function(){
+        if(($scope.personData.pdfOrder > 1) & (!$scope.personData.sibling)){
+        if($scope.formData[$scope.personData.child].firstName == undefined & $scope.formData[$scope.personData.child].lastName == undefined){
+          console.log('hi');
+          var next = $scope.personData.next;
+          console.log(next);
+          //$state.go(next, {'id': $scope.locale},{reload: true, inherit: true})
+        }
+        }
+      });
     };
         
     $scope.countSiblings = function(obj){
