@@ -196,14 +196,22 @@ angular.module('scouts')
       });
     };
 
+    $scope.clearData = function(){
+      console.log('hey. i should delete');
+      angular.copy(resetPersonData, $scope.personData);
+      angular.copy(resetFormData, $scope.formData);
+    };
+
     $scope.goTo = function(state){
-      console.log(state);
-      if(state == 'home'){
-        //clear memory
-        angular.copy(resetFormData, $scope.formData);
-        angular.copy(resetPersonData, $scope.PersonData);
-      }
-      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true});
+      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true}).
+      then(function(){
+        if(($scope.personData.pdfOrder > 1) & (!$scope.personData.sibling)){
+          if($scope.formData[$scope.personData.child].firstName == undefined & $scope.formData[$scope.personData.child].lastName == undefined){
+            console.log('hi');
+            //$state.go(next, {'id': $scope.locale},{reload: true, inherit: true})
+          }
+        }
+      });
     };
 
     $scope.countSiblings = function(obj){
