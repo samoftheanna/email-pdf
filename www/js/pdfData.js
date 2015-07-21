@@ -1,7 +1,6 @@
 angular.module('scouts')
-  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2){
+  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2, $state, $window){
     var data = $scope.formData;
-        
     
     var people = Object.getOwnPropertyNames(data);
     people = people.slice(6);
@@ -45,7 +44,7 @@ angular.module('scouts')
     var flatData = flattenObject(data);
     
     
-    pdfMake.fonts = { //need to find out what fonts to use for cjk/rus/thai, adjust based on locale
+    pdfMake.fonts = { 
       proximaNova: {
        normal: 'ProximaNova-Reg-webfont.ttf',
        bold: 'ProximaNova-Bold-webfont.ttf',
@@ -183,98 +182,98 @@ angular.module('scouts')
               break;
             case 'myFathersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['RM.lastName'] + ' ' + flatData['RM.firstName'] + ' ' + titles[3] , style: 'subtitle'}); //may not want spaces
+                stack2.push({text: (flatData['RM.lastName'] || '') + ' ' + (flatData['RM.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'}); //may not want spaces
               } 
               else {
-                stack2.push({text: titles[3] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['RM.firstName'] || '') + ' ' + (flatData['RM.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myFathersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['RM.lastName'] + ' ' + flatData['RM.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['RM.lastName'] || '') + ' ' + (flatData['RM.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['RM.firstName'] || '') + ' ' + (flatData['RM.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['RF.lastName'] + ' ' + flatData['RF.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+                stack2.push({text: (flatData['RF.lastName'] || '') + ' ' + (flatData['RF.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[3] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['RF.firstName'] || '') + ' ' + (flatData['RF.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['RF.lastName'] + ' ' + flatData['RF.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['RF.lastName'] || '') + ' ' + (flatData['RF.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['RF.firstName'] || '') + ' ' + (flatData['RF.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myFathersFathersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myFathersFather.lastName'] + ' ' + flatData['myFathersFather.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+                stack2.push({text: (flatData['myFathersFather.lastName'] || '') + ' ' + (flatData['myFathersFather.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[3] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['myFathersFather.firstName'] || '') + ' ' + (flatData['myFathersFather.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myFathersFathersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myFathersFather.lastName'] + ' ' + flatData['myFathersFather.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['myFathersFather.lastName'] || '') + ' ' + (flatData['myFathersFather.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['myFathersFather.firstName'] || '') + ' ' + (flatData['myFathersFather.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myFathersMothersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myFathersMother.lastName'] + ' ' + flatData['myFathersMother.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+                stack2.push({text: (flatData['myFathersMother.lastName'] || '') + ' ' + (flatData['myFathersMother.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[3] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['myFathersMother.firstName'] || '') + ' ' + (flatData['myFathersMother.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myFathersMothersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myFathersMother.lastName'] + ' ' + flatData['myFathersMother.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['myFathersMother.lastName'] || '') + ' ' + (flatData['myFathersMother.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['myFathersMother.firstName'] || '') + ' ' + (flatData['myFathersMother.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersFathersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myMothersFather.lastName'] + ' ' + flatData['myMothersFather.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+                stack2.push({text: (flatData['myMothersFather.lastName'] || '') + ' ' + (flatData['myMothersFather.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[3] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['myMothersFather.firstName'] || '') + ' ' + (flatData['myMothersFather.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersFathersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myMothersFather.lastName'] + ' ' + flatData['myMothersFather.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['myMothersFather.lastName'] || '') + ' ' + (flatData['myMothersFather.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['myMothersFather.firstName'] || '') + ' ' + (flatData['myMothersFather.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersMothersFather':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myMothersMother.lastName'] + ' ' + flatData['myMothersMother.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+                stack2.push({text: (flatData['myMothersMother.lastName'] || '') + ' ' + (flatData['myMothersMother.firstName'] || '') + ' ' + titles[3] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[3] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[3] + (flatData['myMothersMother.firstName'] || '') + ' ' + (flatData['myMothersMother.lastName'] || ''), style: 'subtitle'});
               }
               break;
             case 'myMothersMothersMother':
               if($scope.showReversed()) {
-                stack2.push({text: flatData['myMothersMother.lastName'] + ' ' + flatData['myMothersMother.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+                stack2.push({text: (flatData['myMothersMother.lastName'] || '') + ' ' + (flatData['myMothersMother.firstName'] || '') + ' ' + titles[2] , style: 'subtitle'});
               } 
               else {
-                stack2.push({text: titles[2] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+                stack2.push({text: titles[2] + (flatData['myMothersMother.firstName'] || '') + ' ' + (flatData['myMothersMother.lastName'] || ''), style: 'subtitle'});
               }
               break;
           }
@@ -500,13 +499,25 @@ angular.module('scouts')
     var createContentArray = function(){
       content = content.concat(booklet());
     };
-   
+       
     var filename = "my_booklet_"+flatData['R_title.lastName']+"-"+flatData['R_title.firstName']+".pdf";
    
     var createEmail = function(file){
-      $ionicLoading.hide();
-      cordova.plugins.email.open({
-        attachments: file
+      
+      var email = {attachments: file}
+      $cordovaEmailComposer.open(email)
+      .then(null, function (){
+        $scope.clearData();
+        $cordovaFile.removeFile(cordova.file.dataDirectory, filename)
+          .then(function (success) {
+            // success
+            console.log('file deleted');
+          }, function (error) {
+            // error
+            console.log(error);
+          });
+        $window.location.reload();
+        $scope.goTo('home');
       });
     };
     
@@ -520,10 +531,11 @@ angular.module('scouts')
     };
     
     $scope.generate = function(){
-      $ionicLoading.show({
-        template: 'loading...'
-      });
+//      $ionicLoading.show({
+//        template: 'loading...'
+//      });
       var docDefinition = {content: content,
+        pageMargins: [ 40, 40, 40, 40 ],
         defaultStyle: {
           font: 'proximaNova',
           fontSize: 18,
@@ -543,7 +555,7 @@ angular.module('scouts')
       $ionicPlatform.ready(function() {
         if(!window.cordova){
           pdfMake.createPdf(docDefinition).download(filename);
-          $ionicLoading.hide();
+          $state.go($state.current, {}, {reload: true});
         }
         else {
           pdfMake.createPdf(docDefinition).getBuffer(function(result){
@@ -551,25 +563,26 @@ angular.module('scouts')
             $cordovaFile.writeFile(cordova.file.dataDirectory, filename, pdfBlob,  true)
             .then(function (success) {
               // success
-              $ionicLoading.hide();
+              
               console.log('we wrote a new file! ' + success);
               $cordovaFile.checkFile(cordova.file.dataDirectory, filename)
               .then(function (success) {
                 // success
-                $ionicLoading.hide();
+                
                 console.log('when checking your booklet:');
                 var nativeURL = success.nativeURL;
   
                 createEmail(nativeURL);
+                $window.location.reload();
+                
   //              openPDF(nativeURL);
               }, function (error) {
                 // error
-                $ionicLoading.hide();
+                
                 console.log("checking a file didn't work " + error.message);
               });
             }, function (error) {
               // error
-              $ionicLoading.hide();
               console.log("creating a file didn't work: " + error.message);
             });
           });
