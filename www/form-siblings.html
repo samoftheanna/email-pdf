@@ -29,12 +29,12 @@
             <label class="formData_header_text" translate>{{'gender'}}</label>
           </div>
           <div class="formData_inner">
-            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Male" name="form-person-gender">
-            <label class="inline radioLabel">{{'male' | translate}}</label>
-            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Female" name="form-person-gender">
-            <label class="inline radioLabel">{{'female' | translate}}</label>
-            <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Unknown" name="form-person-gender">
-            <label class="inline radioLabel">{{'unknown' | translate}}</label>
+            <input type="radio" id="radio-male" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Male" name="form-person-gender">
+            <label class="inline radioLabel" for="radio-male">{{'male' | translate}}</label>
+            <input type="radio" id="radio-female" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Female" name="form-person-gender">
+            <label class="inline radioLabel" for="radio-female">{{'female' | translate}}</label>
+            <input type="radio" id="radio-unknown" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].gender" value="Unknown" name="form-person-gender">
+            <label class="inline radioLabel" for="radio-unknown">{{'unknown' | translate}}</label>
           </div>
         </div>
       </div>
@@ -64,19 +64,12 @@
               <label class="formData_header_text" translate>{{'is_living'}}</label>
           </div>
           <div class="formData_inner">
-
-              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="true" name="is-living">
-
-            <label class="inline radioLabel" translate>{{'yes'}}</label>
-
-              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="false" name="is-living">
-
-            <label class="inline radioLabel" translate>{{'no'}}</label>
-
-              <input type="radio" class="inline" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="unknown" name="is-living">
-
-            <label class="inline radioLabel" translate>{{'unknown_living'}}</label>
-
+            <input type="radio" class="inline" id="radio-true" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="true" name="is-living">
+            <label class="inline radioLabel"  for="radio-true" translate>{{'yes'}}</label>
+            <input type="radio" class="inline" id="radio-false" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="false" name="is-living">
+            <label class="inline radioLabel"  for="radio-false" translate>{{'no'}}</label>
+            <input type="radio" class="inline" id="radio-unknown" data-ng-model="formData[personData.generationTitle][personData.sibNumber].living" value="unknown" name="is-living">
+            <label class="inline radioLabel" for="radio-unknown" translate>{{'unknown_living'}}</label>
           </div>
         </div>
       </div>
