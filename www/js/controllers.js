@@ -150,15 +150,16 @@ angular.module('scouts')
   .controller('BookletCtrl', ['$translate','$scope','$stateParams','$state','bookletCache', 'Camera', function($translate, $scope, $stateParams, $state, bookletCache, Camera){
 
     $scope.personData = $state.current.params;
-    
+    var resetPersonData = angular.copy($scope.personData);
 
 //    $scope.cache = bookletCache;
-    
+
     $scope.formData = bookletCache;
-    
+    var resetFormData = angular.copy($scope.formData);
+
     var males = ['RM','myFathersFather','myMothersFather','myFathersFathersFather','myFathersMothersFather','myMothersFathersFather','myMothersMothersFather'];
     var females = ['RF','myFathersMother','myMothersMother','myFathersFathersMother','myFathersMothersMother','myMothersFathersMother','myMothersMothersMother'];
-    
+
     var setGender = function(people, gender){
       for (var i = 0; i < people.length; i++) {
         var n = people[i];
@@ -167,24 +168,24 @@ angular.module('scouts')
         }
       }
     };
-    
+
     setGender(males,'Male');
     setGender(females, 'Female');
-    
+
     $scope.showReversed = function() {
       if( $scope.locale === 'ja' ||
           $scope.locale === 'ko' ||
           $scope.locale === 'zh') return true;
       return false;
     };
-    
+
     if(!$scope.formData.R_title){
       $scope.formData.R_title = {'living': "true"};
     }
-    
-    $scope.locale = $stateParams.id; 
+
+    $scope.locale = $stateParams.id;
     $translate.use($scope.locale);
-    
+
     $scope.addImage = function(){
       Camera.getPicture().then(function(imageURI) {
         console.log(imageURI);
@@ -194,11 +195,17 @@ angular.module('scouts')
         console.log(err);
       });
     };
-    
+
     $scope.goTo = function(state){
+      console.log(state);
+      if(state == 'home'){
+        //clear memory
+        angular.copy(resetFormData, $scope.formData);
+        angular.copy(resetPersonData, $scope.PersonData);
+      }
       $state.go(state, {'id': $scope.locale},{reload: true, inherit: true});
     };
-        
+
     $scope.countSiblings = function(obj){
       if(obj){
         return Object.keys(obj).length;
@@ -206,9 +213,9 @@ angular.module('scouts')
     };
 
     $scope.thisPage = $state.current.name;
-    
+
     var returnTo = $state.current.name;
-    
+
     switch ($stateParams.sibling) {
       case 'R_title':
       $scope.returnTo = '^.siblings';
@@ -231,12 +238,13 @@ angular.module('scouts')
       case 'myMothersMother':
       $scope.returnTo = '^.mmsiblings';
       break;
-    }      
+    }
 
     $scope.setReturn = function(){
+      //Save and exit
       $scope.returnTo = returnTo;
     };
-    
+
     $scope.setSibNumber = function(number){
       $state.current.params.sibNumber = number;
     }
