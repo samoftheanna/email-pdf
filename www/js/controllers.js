@@ -195,7 +195,7 @@ angular.module('scouts')
         console.log(err);
       });
     };
-    
+
     $scope.clearData = function(){
       console.log('hey. i should delete');
       angular.copy(resetPersonData, $scope.personData);

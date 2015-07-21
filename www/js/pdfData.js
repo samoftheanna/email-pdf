@@ -98,10 +98,18 @@ angular.module('scouts')
       var deets = function(person){
         var name;
         if(flatData[person+'.firstName'] && flatData[person+'.lastName']){
-          name = flatData[person+'.firstName'] + ' ' + flatData[person+'.lastName'];
+          if ($scope.showReversed()){
+            name = flatData[person+'.lastName'] + ' ' + flatData[person+'.firstName'];                        
+          }
+          else {
+            name = flatData[person+'.firstName'] + ' ' + flatData[person+'.lastName'];            
+          }
         } else if(flatData[person+'.firstName']){
           name = flatData[person+'.firstName'];
+        } else if(flatData[person+'.lastName']){
+          name = flatData[person+'.lastName'];
         }
+        
  
         var stack1 = [];
         switch(person){
@@ -174,40 +182,100 @@ angular.module('scouts')
               stack2.push({text: titles[14], style: 'subtitle'});
               break;
             case 'myFathersFather':
-              stack2.push({text: titles[3] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['RM.lastName'] + ' ' + flatData['RM.firstName'] + ' ' + titles[3] , style: 'subtitle'}); //may not want spaces
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myFathersMother':
-              stack2.push({text: titles[2] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['RM.lastName'] + ' ' + flatData['RM.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['RM.firstName'] + ' ' + flatData['RM.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersFather':
-              stack2.push({text: titles[3] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['RF.lastName'] + ' ' + flatData['RF.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersMother':
-              stack2.push({text: titles[2] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['RF.lastName'] + ' ' + flatData['RF.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['RF.firstName'] + ' ' + flatData['RF.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myFathersFathersFather':
-              stack2.push({text: titles[3] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myFathersFather.lastName'] + ' ' + flatData['myFathersFather.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myFathersFathersMother':
-              stack2.push({text: titles[2] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myFathersFather.lastName'] + ' ' + flatData['myFathersFather.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['myFathersFather.firstName'] + ' ' + flatData['myFathersFather.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myFathersMothersFather':
-              stack2.push({text: titles[3] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myFathersMother.lastName'] + ' ' + flatData['myFathersMother.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myFathersMothersMother':
-              stack2.push({text: titles[2] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myFathersMother.lastName'] + ' ' + flatData['myFathersMother.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['myFathersMother.firstName'] + ' ' + flatData['myFathersMother.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersFathersFather':
-              stack2.push({text: titles[3] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myMothersFather.lastName'] + ' ' + flatData['myMothersFather.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersFathersMother':
-              stack2.push({text: titles[2] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myMothersFather.lastName'] + ' ' + flatData['myMothersFather.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['myMothersFather.firstName'] + ' ' + flatData['myMothersFather.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersMothersFather':
-              stack2.push({text: titles[3] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myMothersMother.lastName'] + ' ' + flatData['myMothersMother.firstName'] + ' ' + titles[3] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[3] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+              }
               break;
             case 'myMothersMothersMother':
-              stack2.push({text: titles[2] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+              if($scope.showReversed()) {
+                stack2.push({text: flatData['myMothersMother.lastName'] + ' ' + flatData['myMothersMother.firstName'] + ' ' + titles[2] , style: 'subtitle'});
+              } 
+              else {
+                stack2.push({text: titles[2] + flatData['myMothersMother.firstName'] + ' ' + flatData['myMothersMother.lastName'], style: 'subtitle'});
+              }
               break;
           }
         }
@@ -248,9 +316,16 @@ angular.module('scouts')
           while((data[sibTitle] !== undefined) && (data[sibTitle][b] !== undefined)) { //while loop syntax
             var name = '';
             if(flatData[sibTitle+'.'+b+'.firstName'] && flatData[sibTitle+'.'+b+'.lastName']){
-              name = flatData[sibTitle+'.'+b+'.firstName'] + ' ' + flatData[sibTitle+'.'+b+'.lastName'];
+              if($scope.showReversed()){
+                name = flatData[sibTitle+'.'+b+'.lastName'] + ' ' + flatData[sibTitle+'.'+b+'.firstName'];                
+              }
+              else {
+                name = flatData[sibTitle+'.'+b+'.firstName'] + ' ' + flatData[sibTitle+'.'+b+'.lastName'];
+              }
             } else if(flatData[sibTitle+'.'+b+'.firstName']){
               name = flatData[sibTitle+'.'+b+'.firstName'];
+            } else if(flatData[sibTitle+'.'+b+'.lastName']){
+              name = flatData[sibTitle+'.'+b+'.lastName'];
             }
 
             var nameLine = [];
