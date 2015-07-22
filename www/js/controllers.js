@@ -60,7 +60,7 @@ angular.module('scouts')
         'third': 'Adicione as informações que faltam sobre sua família.'
       },
       'ko': {
-        'instructions': '명령',
+        'instructions': '유의 사항',
         'first': '가족에 대해 아는 대로 정보를 추가하십 시오.',
         'second': '도움을 받기 위해 자신이나 부모, 친척, 친구에게 이것을 이메일로 보내십시오.',
         'third': '가족에 대해 남아있는 정보를 추가하십 시오.'
