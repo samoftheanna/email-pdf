@@ -84,7 +84,7 @@ var translations_fr = {
   "title": "Titre",
   "first_name": "Prénoms",
   "last_name": "Noms de famille",
-  "first_name_placeholder": "Ajouter les premier et deuxième prénoms",
+  "first_name_placeholder": "Ajouter les prénoms",
   "last_name_placeholder": "Ajouter le nom de famille",
   "suffix": "Suffixe",
   "gender": "Sexe",
