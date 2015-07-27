@@ -59,6 +59,9 @@ input[type="text"],input[type="phone"]{
   color: #fff;
   padding-top: 5px;
   padding-bottom: 5px;
+  min-height: 110px;
+  padding-top: 20px;
+  margin: -2em -1.25em 2em -1.25em;
 }
 @media only screen and (max-width: 650px) {
   .generation-banner {
@@ -100,23 +103,15 @@ input[type="text"],input[type="phone"]{
 }
 .generation-banner.generation-1 {
   background-color: #00a59b;
-  min-height: 110px;
-  padding-top: 20px;
 }
 .generation-banner.generation-2 {
   background-color: #82a62e;
-  min-height: 110px;
-  padding-top: 20px;
 }
 .generation-banner.generation-3 {
   background-color: #fbb14b;
-  min-height: 110px;
-  padding-top: 20px;
 }
 .generation-banner.generation-4 {
   background-color: #0051c4;
-  min-height: 110px;
-  padding-top: 20px;
 }
 .nav-arrow.disabled {
   opacity: 0.5;
@@ -137,15 +132,9 @@ input[type="text"],input[type="phone"]{
   color: #fff;
   cursor: pointer;
   display: block;
-  left: 50%;
+  left: .25em;
   position: absolute;
-  margin: -12px 0 0 -275px;
-  top: 55%;
-}
-@media only screen and (max-width: 650px) {
-  .nav-arrow.navPrevious {
-    margin: -12px 0 0 -147.5px;
-  }
+  top: 33%;
 }
 .nav-arrow.navNext {
   border-bottom-color: rgba(0,0,0,0);
@@ -167,13 +156,13 @@ input[type="text"],input[type="phone"]{
 .nav-container-arrow{
   cursor: pointer;
   display: block;
-  margin: -12px -275px 0 0;
   position: absolute;
-  right: 46%;
-  top: 40%;
   height: 50px;
   width: 50px;
   padding: 13px 19px;
+  left: auto;
+  right: calc(.25em - 19px);
+  top: calc(33% - 13px);
 }
 .nav-arrow.large{
   border-bottom-width: 25px;
@@ -186,11 +175,6 @@ input[type="text"],input[type="phone"]{
   height: 50px;
   width: 50px;
   padding: 13px 19px;
-}
-@media only screen and (max-width: 650px) {
-  .nav-arrow.navNext {
-    margin: -12px -147.5px 0 0;
-  }
 }
 .formData_container {
   margin: 5px 0;
