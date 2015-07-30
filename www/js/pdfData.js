@@ -1,12 +1,14 @@
 angular.module('scouts')
-  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2, $state, $window){
+  .controller('PdfCtrl', function($scope, $cordovaFile, $ionicPlatform, $ionicLoading, $cordovaEmailComposer, $translate, $rootScope, $cordovaFileOpener2, $state, $window, $cordovaProgress){
+            
     var data = $scope.formData;
     
     var people = Object.getOwnPropertyNames(data);
-    people = people.slice(6);
+    if (people[0] === 'put') {
+      people = people.slice(6);
+    }
     var labels = ['suggested_birth','suggested_death','suggested_marriage', 'father_subtitle', 'mother_subtitle', 'learn_about_me', 'my_hobbies'];
     
-
     strings = labels.forEach(function(element, index, array){
       people.unshift(element);
     });
@@ -516,8 +518,6 @@ angular.module('scouts')
             // error
             console.log(error);
           });
-        $window.location.reload();
-        $scope.goTo('home');
       });
     };
     
@@ -529,11 +529,8 @@ angular.module('scouts')
         console.log(error);
       });
     };
-    
+        
     $scope.generate = function(){
-//      $ionicLoading.show({
-//        template: 'loading...'
-//      });
       var docDefinition = {content: content,
         pageMargins: [ 40, 40, 40, 40 ],
         defaultStyle: {
@@ -555,9 +552,9 @@ angular.module('scouts')
       $ionicPlatform.ready(function() {
         if(!window.cordova){
           pdfMake.createPdf(docDefinition).download(filename);
-          $state.go($state.current, {}, {reload: true});
         }
         else {
+          $cordovaProgress.showAnnular(true, 50000);
           pdfMake.createPdf(docDefinition).getBuffer(function(result){
             var pdfBlob = new Blob([result], {type: 'application/pdf'});
             $cordovaFile.writeFile(cordova.file.dataDirectory, filename, pdfBlob,  true)
@@ -573,8 +570,7 @@ angular.module('scouts')
                 var nativeURL = success.nativeURL;
   
                 createEmail(nativeURL);
-                $window.location.reload();
-                
+                                
   //              openPDF(nativeURL);
               }, function (error) {
                 // error

@@ -148,14 +148,12 @@ angular.module('scouts')
     };
   })
   .controller('BookletCtrl', ['$translate','$scope','$stateParams','$state','bookletCache', 'Camera', function($translate, $scope, $stateParams, $state, bookletCache, Camera){
-
+    
     $scope.personData = $state.current.params;
     var resetPersonData = angular.copy($scope.personData);
 
-//    $scope.cache = bookletCache;
 
     $scope.formData = bookletCache;
-//    var resetFormData = angular.copy($scope.formData);
     var resetFormData = {};
 
     var males = ['RM','myFathersFather','myMothersFather','myFathersFathersFather','myFathersMothersFather','myMothersFathersFather','myMothersMothersFather'];
@@ -200,21 +198,15 @@ angular.module('scouts')
     $scope.clearData = function(){
       angular.copy(resetFormData, $scope.formData);
       angular.copy(resetPersonData, $scope.personData);
-      if($state.current.params.sibNumber){
+      if($state.current.params.sibNumber != undefined){ //exiting from a sibling page
         $state.current.params.sibNumber = undefined;
+        console.log('you left the siblings page');
       }
+      console.log('cleared');
     };
 
     $scope.goTo = function(state){
-      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true}).
-      then(function(){
-        if(($scope.personData.pdfOrder > 1) & (!$scope.personData.sibling)){
-          if($scope.formData[$scope.personData.child].firstName == undefined & $scope.formData[$scope.personData.child].lastName == undefined){
-            console.log('hi');
-            //$state.go(next, {'id': $scope.locale},{reload: true, inherit: true})
-          }
-        }
-      });
+      $state.go(state, {'id': $scope.locale},{reload: true, inherit: true});
     };
 
     $scope.countSiblings = function(obj){
@@ -255,15 +247,18 @@ angular.module('scouts')
       //Save and exit
       $scope.returnTo = returnTo;
     };
-
+    
     $scope.setSibNumber = function(number){
       $state.current.params.sibNumber = number;
     }
 
     $scope.addSibling = function(){
+      var gen = $state.current.params.generationTitle;
+      var info = $scope.formData;
+      if($state.current.params.sibNumber && info[gen] == undefined){
+        $state.current.params.sibNumber = undefined;
+      }
       if($state.current.params.sibNumber){
-        var gen = $state.current.params.generationTitle;
-        var info = $scope.formData;
         var number = Object.keys(info[gen]).length;
         $state.current.params.sibNumber = ++number;
       }

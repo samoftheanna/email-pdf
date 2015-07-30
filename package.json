@@ -34,6 +34,10 @@
     {
       "locator": "https://github.com/katzer/cordova-plugin-email-composer.git",
       "id": "de.appplant.cordova.plugin.email-composer"
+    },
+    {
+      "locator": "https://github.com/pbernasconi/cordova-progressIndicator.git",
+      "id": "org.pbernasconi.progressindicator"
     }
   ],
   "cordovaPlatforms": [

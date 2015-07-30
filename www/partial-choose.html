@@ -3,7 +3,7 @@
   <p class="tagline">Stories That Bring Us Together</p>
   <h2>Select a Language</h2>
   <ul id="language-choice" ng-controller="LangListCtrl">
-    <li ng-repeat="language in supportedLanguages" class="language supported" ng-click="changeLanguage('{{language.code}}')"><a ng-href="#/instructions/{{language.code}}"><h3>{{language.label}}</h3><p>({{language.language}})</p></a></li>
+    <li ng-repeat="language in supportedLanguages" class="language supported" on-tap="changeLanguage('{{language.code}}')"><a ng-href="#/instructions/{{language.code}}"><h3>{{language.label}}</h3><p>({{language.language}})</p></a></li>
   </ul>
 </div>
 <!-- need to put language code back in somehow. route won't work -->

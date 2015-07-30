@@ -55,6 +55,8 @@ pre {
 
 .pdf button {
   margin-bottom: 1em; }
+  .pdf button.button:active, .pdf button.button:focus, .pdf button.button:hover, .pdf button.button.activated {
+    background-color: rgba(148, 159, 178, 0.7); }
 
 body {
   background: #81b94b;

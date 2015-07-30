@@ -55,7 +55,16 @@ pre {
     margin-bottom: .5em
 }
 .pdf button {
-    margin-bottom: 1em
+  margin-bottom: 1em;
+  &.button {
+    &:active,
+    &:focus,
+    &:hover,
+//    &.disable-user-behavior,
+//    &.activated {
+      background-color: rgba(148, 159, 178, .7);
+    }
+  }
 }
 body {
     background: #81b94b;

@@ -132,9 +132,9 @@ input[type="text"],input[type="phone"]{
   color: #fff;
   cursor: pointer;
   display: block;
-  left: .25em;
+  left: 1.25em;
   position: absolute;
-  top: 33%;
+  top: 40%;
 }
 .nav-arrow.navNext {
   border-bottom-color: rgba(0,0,0,0);
@@ -161,9 +161,19 @@ input[type="text"],input[type="phone"]{
   width: 50px;
   padding: 13px 19px;
   left: auto;
-  right: calc(.25em - 19px);
-  top: calc(33% - 13px);
+  right: calc(1.25em - 19px);
+  top: calc(40% - 13px);
 }
+
+@media only screen and (max-width: 650px) {
+  .nav-container-arrow {
+    right: calc(.25em - 19px);
+  }
+  .nav-arrow.navPrevious {
+    left: .25em;
+  }
+}
+
 .nav-arrow.large{
   border-bottom-width: 25px;
   border-left-width: 25px;

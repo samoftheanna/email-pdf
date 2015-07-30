@@ -1,7 +1,7 @@
 <image-artifact class="addPhotoButton">
   <div class="photoButtonContainer">
     <div class="addImage"  ng-class="{'new-photo': lastPhoto}">
-      <a class="add-photo" data-ng-click="addImage()">
+      <a class="add-photo" on-tap="addImage()">
         <div>
           <img ng-src="{{lastPhoto || 'assets/img/photo_image.png'}}">
           <p ng-show="!lastPhoto" translate>{{'photos_add'}}</p>
